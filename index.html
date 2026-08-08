@@ -9,654 +9,369 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);padding:1.5rem 2rem;line-height:1.5}
 h1{color:var(--gold);font-size:1.5rem;margin-bottom:.2rem}
-.subtitle{color:var(--text-dim);font-size:.88rem;margin-bottom:1.2rem}
+h2{color:var(--gold);font-size:1.15rem;margin:1.2rem 0 .6rem}
+.subtitle{color:var(--text-dim);font-size:.85rem;margin-bottom:1.2rem}
 a{color:var(--gold)}
-
-/* Tabs */
 .tabs{display:flex;gap:2px;margin-bottom:0}
-.tab{padding:.65rem 1.4rem;background:var(--card);border:1px solid var(--border);border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;font-size:.85rem;color:var(--text-dim);font-weight:600;transition:all .15s}
+.tab{padding:.6rem 1.2rem;background:var(--card);border:1px solid var(--border);border-bottom:none;border-radius:8px 8px 0 0;cursor:pointer;font-size:.82rem;color:var(--text-dim);font-weight:600;transition:all .15s}
 .tab:hover{color:var(--text)}
 .tab.active{background:var(--bg);color:var(--gold);border-color:var(--gold);border-bottom:1px solid var(--bg);position:relative;z-index:2}
 .tab-body{border:1px solid var(--border);border-radius:0 8px 8px 8px;padding:1.5rem;display:none;background:var(--bg)}
 .tab-body.active{display:block}
-
-/* Legend */
-.legend{display:flex;gap:1.2rem;margin-bottom:1rem;flex-wrap:wrap;font-size:.8rem}
-.legend-item{display:flex;align-items:center;gap:.35rem}
-.legend-swatch{width:12px;height:12px;border-radius:3px;flex-shrink:0}
-
-/* Stats */
-.stats-bar{display:flex;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
-.stat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.8rem 1.2rem;text-align:center;min-width:120px}
-.stat-num{font-size:1.8rem;font-weight:700}
-.stat-label{font-size:.72rem;color:var(--text-dim);margin-top:.15rem}
-
-/* Coverage grid (Tab 1) */
-.grid{display:grid;grid-template-columns:195px repeat(8,1fr);gap:2px;font-size:.78rem;margin-bottom:1rem}
-.gh{background:var(--card);border:1px solid var(--border);padding:.45rem .35rem;font-weight:600;text-align:center;color:var(--gold);font-size:.7rem;display:flex;align-items:center;justify-content:center}
+.legend{display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;font-size:.78rem}
+.legend-item{display:flex;align-items:center;gap:.3rem}
+.legend-swatch{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+.stats-bar{display:flex;gap:1.2rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;text-align:center;min-width:110px}
+.stat-num{font-size:1.6rem;font-weight:700}
+.stat-label{font-size:.68rem;color:var(--text-dim);margin-top:.1rem}
+.grid{display:grid;grid-template-columns:180px repeat(8,1fr);gap:2px;font-size:.75rem;margin-bottom:1rem}
+.gh{background:var(--card);border:1px solid var(--border);padding:.4rem .3rem;font-weight:600;text-align:center;color:var(--gold);font-size:.68rem;display:flex;align-items:center;justify-content:center}
 .gh.col-gen{background:var(--gold-dim);border-color:var(--gold)}
-.gl{background:var(--card);border:1px solid var(--border);padding:.4rem .5rem;font-weight:600;font-size:.76rem;display:flex;align-items:center;color:var(--wh)}
-.gl .yr{color:var(--text-dim);font-weight:400;font-size:.68rem;margin-left:auto}
-.gc{border:1px solid var(--border);padding:.3rem .25rem;text-align:center;font-size:.68rem;display:flex;align-items:center;justify-content:center;min-height:40px;position:relative;cursor:default}
-.gc .step-num{position:absolute;top:2px;left:3px;font-size:.55rem;font-weight:700;background:rgba(0,0,0,.4);color:var(--wh);border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center}
+.gl{background:var(--card);border:1px solid var(--border);padding:.35rem .45rem;font-weight:600;font-size:.72rem;display:flex;align-items:center;color:var(--wh)}
+.gl .yr{color:var(--text-dim);font-weight:400;font-size:.65rem;margin-left:auto}
+.gc{border:1px solid var(--border);padding:.25rem .2rem;text-align:center;font-size:.65rem;display:flex;align-items:center;justify-content:center;min-height:38px;position:relative;cursor:pointer;transition:filter .12s}
+.gc:hover{filter:brightness(1.25)}
+.gc .sn{position:absolute;top:1px;left:2px;font-size:.5rem;font-weight:700;background:rgba(0,0,0,.45);color:var(--wh);border-radius:50%;width:13px;height:13px;display:flex;align-items:center;justify-content:center}
 .gc.reordered{border-style:dashed!important}
-/* cell colors */
-.c-prob{background:var(--blue-dim);color:var(--blue)}
-.c-evid{background:var(--purple-dim);color:var(--purple)}
-.c-gen{background:var(--gold-dim);color:var(--gold);font-weight:700;border-color:rgba(219,173,80,.4)!important}
-.c-gen-thin{background:var(--gold-dim);color:var(--gold);opacity:.6}
-.c-crit{background:var(--teal-dim);color:var(--teal)}
-.c-eval{background:var(--red-dim);color:var(--red)}
-.c-comp{background:rgba(192,57,43,.1);color:#c0392b}
-.c-dec{background:var(--green-dim);color:var(--green)}
-.c-comm{background:rgba(149,165,166,.12);color:#95a5a6}
-.c-impl{background:var(--orange-dim);color:var(--orange)}
-.c-na{background:transparent;color:var(--gray);font-style:italic;opacity:.5}
-.c-expost{background:rgba(231,76,60,.06);color:var(--red);opacity:.5;font-style:italic}
-
-/* Swim lane (Tab 2) */
+.c-prob{background:var(--blue-dim);color:var(--blue)}.c-evid{background:var(--purple-dim);color:var(--purple)}.c-gen{background:var(--gold-dim);color:var(--gold);font-weight:700;border-color:rgba(219,173,80,.4)!important}.c-gen-thin{background:var(--gold-dim);color:var(--gold);opacity:.6}.c-crit{background:var(--teal-dim);color:var(--teal)}.c-eval{background:var(--red-dim);color:var(--red)}.c-comp{background:rgba(192,57,43,.1);color:#c0392b}.c-dec{background:var(--green-dim);color:var(--green)}.c-comm{background:rgba(149,165,166,.12);color:#95a5a6}.c-impl{background:var(--orange-dim);color:var(--orange)}.c-na{background:transparent;color:var(--gray);font-style:italic;opacity:.5}.c-expost{background:rgba(231,76,60,.06);color:var(--red);opacity:.5;font-style:italic}
+/* Tooltip */
+.tt{position:relative}.tt .ttx{visibility:hidden;opacity:0;position:absolute;z-index:50;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#1a3761;border:1px solid var(--gold);border-radius:6px;padding:.5rem .7rem;font-size:.7rem;color:var(--text);width:280px;line-height:1.4;text-align:left;font-weight:400;font-style:normal;pointer-events:none;transition:opacity .15s;box-shadow:0 4px 12px rgba(0,0,0,.4)}.tt:hover .ttx{visibility:visible;opacity:1}
 .swim{margin-bottom:1rem}
-.swim-row{display:flex;align-items:center;margin-bottom:4px;gap:0}
-.swim-label{width:195px;flex-shrink:0;font-size:.76rem;font-weight:600;color:var(--wh);text-align:right;padding-right:.8rem}
-.swim-label .yr{color:var(--text-dim);font-weight:400;font-size:.68rem;margin-left:.4rem}
-.swim-track{flex:1;display:flex;gap:2px;height:32px;align-items:center}
-.swim-step{height:100%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:600;border-radius:4px;padding:0 .5rem;white-space:nowrap;cursor:pointer;position:relative;min-width:40px;transition:filter .15s}
+.swim-row{display:flex;align-items:center;margin-bottom:3px}
+.swim-label{width:180px;flex-shrink:0;font-size:.72rem;font-weight:600;color:var(--wh);text-align:right;padding-right:.7rem}
+.swim-label .yr{color:var(--text-dim);font-weight:400;font-size:.65rem;margin-left:.3rem}
+.swim-track{flex:1;display:flex;gap:2px;height:28px;align-items:center}
+.swim-step{height:100%;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:600;border-radius:3px;padding:0 .4rem;white-space:nowrap;cursor:pointer;min-width:35px;transition:filter .12s;position:relative}
 .swim-step:hover{filter:brightness(1.3)}
-.swim-arrow{color:var(--gray);font-size:.7rem;margin:0 1px;flex-shrink:0}
-
-/* Modals */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;align-items:center;justify-content:center}
-.modal-overlay.show{display:flex}
-.modal{background:var(--card);border:1px solid var(--gold);border-radius:12px;padding:1.5rem 2rem;max-width:700px;width:90%;max-height:80vh;overflow-y:auto;position:relative}
-.modal h3{color:var(--gold);font-size:1rem;margin-bottom:.8rem}
-.modal p,.modal li{font-size:.85rem;line-height:1.6;margin-bottom:.5rem}
-.modal ul{padding-left:1.2rem}
-.modal-close{position:absolute;top:.8rem;right:1rem;cursor:pointer;color:var(--text-dim);font-size:1.2rem;background:none;border:none}
-.modal-close:hover{color:var(--wh)}
-
-/* Phase buttons */
-.phase-btns{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
-.phase-btn{padding:.4rem .9rem;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:.78rem;cursor:pointer;font-weight:600;transition:all .15s}
-.phase-btn:hover{border-color:var(--gold);color:var(--gold)}
-
-/* Insight */
-.insight{background:var(--card);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:1rem 1.3rem;margin:1rem 0}
-.insight h3{color:var(--gold);font-size:.9rem;margin-bottom:.4rem}
-.insight p{font-size:.83rem;line-height:1.6}
-.insight strong{color:var(--wh)}
-
-.note-box{background:rgba(219,173,80,.08);border:1px solid rgba(219,173,80,.25);border-radius:8px;padding:.8rem 1rem;margin:1rem 0;font-size:.78rem;color:var(--text-dim)}
-.note-box strong{color:var(--gold)}
-
-.footnote{margin-top:1.5rem;padding-top:.8rem;border-top:1px solid var(--border);font-size:.72rem;color:var(--text-dim)}
+.swim-step .ttx{visibility:hidden;opacity:0;position:absolute;z-index:50;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#1a3761;border:1px solid var(--gold);border-radius:6px;padding:.5rem .7rem;font-size:.7rem;color:var(--text);width:260px;line-height:1.4;text-align:left;font-weight:400;pointer-events:none;transition:opacity .15s;box-shadow:0 4px 12px rgba(0,0,0,.4)}.swim-step:hover .ttx{visibility:visible;opacity:1}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;align-items:center;justify-content:center}.modal-overlay.show{display:flex}.modal{background:var(--card);border:1px solid var(--gold);border-radius:12px;padding:1.3rem 1.8rem;max-width:720px;width:92%;max-height:82vh;overflow-y:auto;position:relative}.modal h3{color:var(--gold);font-size:.95rem;margin-bottom:.7rem}.modal p,.modal li{font-size:.82rem;line-height:1.55;margin-bottom:.4rem}.modal ul{padding-left:1.1rem}.modal-close{position:absolute;top:.7rem;right:.9rem;cursor:pointer;color:var(--text-dim);font-size:1.1rem;background:none;border:none}.modal-close:hover{color:var(--wh)}
+.phase-btns{display:flex;gap:.4rem;flex-wrap:wrap;margin:.8rem 0}
+.phase-btn{padding:.35rem .8rem;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:.75rem;cursor:pointer;font-weight:600;transition:all .15s}.phase-btn:hover{border-color:var(--gold);color:var(--gold)}
+.insight{background:var(--card);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:.9rem 1.2rem;margin:.8rem 0}.insight h3{color:var(--gold);font-size:.88rem;margin-bottom:.3rem}.insight p{font-size:.8rem;line-height:1.55}.insight strong{color:var(--wh)}
+.note-box{background:rgba(219,173,80,.08);border:1px solid rgba(219,173,80,.25);border-radius:8px;padding:.7rem .9rem;margin:.8rem 0;font-size:.75rem;color:var(--text-dim)}.note-box strong{color:var(--gold)}
+.bar-section{margin:1rem 0}.bar-row{display:flex;align-items:center;margin-bottom:4px;gap:.4rem}.bar-label{width:180px;font-size:.72rem;text-align:right;flex-shrink:0;color:var(--text-dim)}.bar-track{flex:1;height:20px;background:rgba(255,255,255,.04);border-radius:3px;overflow:hidden;display:flex}.bar-gen{background:var(--gold);height:100%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:var(--bg);min-width:18px}.bar-eval{background:var(--red);opacity:.7;height:100%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:white;min-width:18px}.bar-other{background:rgba(255,255,255,.08);height:100%}
+.finding{display:flex;gap:1rem;margin:.8rem 0;padding:.8rem 1rem;background:var(--card);border-radius:8px;border:1px solid var(--border)}.finding-num{font-size:1.8rem;font-weight:700;color:var(--gold);min-width:50px;display:flex;align-items:center;justify-content:center}.finding-body{flex:1}.finding-body h4{color:var(--wh);font-size:.85rem;margin-bottom:.25rem}.finding-body p{font-size:.78rem;color:var(--text-dim);line-height:1.5}
+.guide-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin:1rem 0}.guide-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.8rem;cursor:pointer;transition:border-color .15s}.guide-card:hover{border-color:var(--gold)}.guide-card h4{color:var(--gold);font-size:.82rem;margin-bottom:.3rem}.guide-card p{font-size:.72rem;color:var(--text-dim);line-height:1.4}
+.footnote{margin-top:1.2rem;padding-top:.7rem;border-top:1px solid var(--border);font-size:.68rem;color:var(--text-dim)}
+@media(max-width:900px){.grid{font-size:.6rem;grid-template-columns:140px repeat(8,1fr)}.guide-grid{grid-template-columns:1fr}.tt .ttx,.swim-step .ttx{width:200px}}
 </style>
 </head>
 <body>
-
 <h1>Policy Analysis Textbook Steps — Synoptic Comparison</h1>
-<p class="subtitle">
-How 21 textbooks prescribe the policy analysis process — and where option <em>generation</em> sits relative to option <em>evaluation</em>.
-Source: <a href="https://www.zotero.org/groups/2366690/policy_analysis">Zotero group 2366690</a>, "Textbooks" collection (38 items, 21 with step sequences or explicit process models).
-</p>
-
-<div class="legend">
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--blue)"></div> Problem</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--purple)"></div> Evidence</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--gold)"></div><strong>Generation</strong></div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--teal)"></div> Criteria</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--red)"></div> Evaluate</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:#c0392b"></div> Compare</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--green)"></div> Decide</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:#95a5a6"></div> Communicate</div>
-  <div class="legend-item"><div class="legend-swatch" style="background:var(--orange)"></div> Implement</div>
-  <div class="legend-item" style="margin-left:1rem"><span style="border:1px dashed var(--text-dim);padding:0 4px;font-size:.7rem;border-radius:3px">dashed</span> = reordered from book's own sequence</div>
-</div>
-
-<div class="stats-bar">
-  <div class="stat"><div class="stat-num" style="color:var(--wh)">21</div><div class="stat-label">textbooks with process models</div></div>
-  <div class="stat"><div class="stat-num" style="color:var(--gold)">17</div><div class="stat-label">name a generation step</div></div>
-  <div class="stat"><div class="stat-num" style="color:var(--red)">3–4</div><div class="stat-label">give a generation METHOD</div></div>
-  <div class="stat"><div class="stat-num" style="color:var(--red)">1?</div><div class="stat-label">cross-domain search</div></div>
-</div>
-
-<!-- Tab bar -->
+<p class="subtitle">How 21 textbooks prescribe the policy analysis process — and where option <em>generation</em> sits relative to option <em>evaluation</em>.<br>Source: <a href="https://www.zotero.org/groups/2366690/policy_analysis">Zotero group 2366690</a>, "Textbooks" collection.</p>
 <div class="tabs">
-  <div class="tab active" onclick="switchTab('coverage')">Coverage Matrix</div>
-  <div class="tab" onclick="switchTab('sequence')">Step Sequences</div>
+<div class="tab active" onclick="switchTab('insights')">Main Insights</div>
+<div class="tab" onclick="switchTab('coverage')">Coverage Matrix</div>
+<div class="tab" onclick="switchTab('sequence')">Step Sequences</div>
 </div>
 
-<!-- ═══════════════ TAB 1: COVERAGE MATRIX ═══════════════ -->
-<div class="tab-body active" id="tab-coverage">
-
-<p style="font-size:.8rem;color:var(--text-dim);margin-bottom:1rem">
-  Which analytical phases does each textbook address? Circled numbers show the book's <strong>own step ordering</strong> — where this differs from the left-to-right column order, the cell border is <span style="border:1px dashed var(--text-dim);padding:0 3px;border-radius:2px">dashed</span>.
-</p>
-
-<div class="phase-btns">
-  <span style="font-size:.78rem;color:var(--text-dim);margin-right:.3rem">Click a phase for cross-textbook differences:</span>
-  <button class="phase-btn" onclick="showModal('m-problem')">Problem</button>
-  <button class="phase-btn" onclick="showModal('m-generate')" style="border-color:var(--gold);color:var(--gold)">Generation</button>
-  <button class="phase-btn" onclick="showModal('m-criteria')">Criteria</button>
-  <button class="phase-btn" onclick="showModal('m-evaluate')">Evaluation</button>
-  <button class="phase-btn" onclick="showModal('m-decide')">Decision</button>
-  <button class="phase-btn" onclick="showModal('m-sequence')">Sequence order</button>
+<!-- ═══ TAB 0: INSIGHTS ═══ -->
+<div class="tab-body active" id="tab-insights">
+<h2>The headline</h2>
+<p style="font-size:1rem;color:var(--wh);margin-bottom:1rem"><strong>Policy analysis textbooks have a developed methodology for choosing between options and an undeveloped one for generating them.</strong> The asymmetry is not that textbooks forget to mention alternatives — all 21 have a slot for it. It is that they treat generation as a checkbox while evaluation gets CBA, MCA, sensitivity testing, and entire graduate courses.</p>
+<div class="stats-bar">
+<div class="stat"><div class="stat-num" style="color:var(--wh)">21</div><div class="stat-label">textbooks with process models</div></div>
+<div class="stat"><div class="stat-num" style="color:var(--gold)">21</div><div class="stat-label">have a generation slot</div></div>
+<div class="stat"><div class="stat-num" style="color:var(--red)">4</div><div class="stat-label">give a generation METHOD</div></div>
+<div class="stat"><div class="stat-num" style="color:var(--red)">1?</div><div class="stat-label">cross-domain design</div></div>
+</div>
+<h2>Five findings</h2>
+<div class="finding"><div class="finding-num">1</div><div class="finding-body"><h4>The step exists; the method does not</h4><p>All 21 textbooks include a generation slot. But only <strong>4</strong> provide named methods (Thissen & Walker ✦, Enserink/Delft ✦, Patton/Sawicki/Clark ✦, Nagel ✦). The other 17 say "brainstorm" or "consult practitioners." The evaluation side has CBA, MCA, sensitivity analysis, robustness testing — each with its own chapter.</p></div></div>
+<div class="finding"><div class="finding-num">2</div><div class="finding-body"><h4>The evaluation tail</h4><p>Every analytical textbook follows generation with <strong>2–4 evaluation steps</strong>. The median page ratio is roughly <strong>4:1</strong>. Bardach: ~15pp generation vs ~50pp evaluation. Weimer & Vining: a subsection vs ~120pp. Only Bobrow & Dryzek invert this.</p></div></div>
+<div class="finding"><div class="finding-num">3</div><div class="finding-body"><h4>The criteria-first split</h4><p><strong>5 textbooks</strong> put criteria <em>before</em> generation. The rest follow Bardach's order. <strong>Neither camp discusses the other's ordering.</strong> If you set criteria first, you constrain what options you can see.</p></div></div>
+<div class="finding"><div class="finding-num">4</div><div class="finding-body"><h4>Formulation ≠ method</h4><p><strong>6 cycle-model textbooks</strong> have a "policy formulation" stage — but describe it as a <em>political process</em>, not an <em>analytical method</em>. Having a generation slot in a descriptive cycle is not having a generation method in a prescriptive toolkit.</p></div></div>
+<div class="finding"><div class="finding-num">5</div><div class="finding-body"><h4>One partial exception</h4><p><strong>Bobrow & Dryzek (1987) ✦✦</strong> draw on 5 intellectual traditions for policy <em>design</em>. But their framework is multi-perspectival (different lenses on one problem), not cross-domain search (finding what another field did about a similar problem). The gap the policy myopia paper identifies goes further.</p></div></div>
+<h2>What you can explore</h2>
+<div class="guide-grid">
+<div class="guide-card" onclick="switchTab('coverage')"><h4>📊 Coverage Matrix</h4><p>Which phases does each textbook cover? Step-order numbers show where sequences differ. Hover cells for what each book recommends.</p></div>
+<div class="guide-card" onclick="switchTab('sequence')"><h4>🔀 Step Sequences</h4><p>Each book's steps in its own order. The criteria-first split and the evaluation tail jump out visually. Hover for details.</p></div>
+<div class="guide-card" onclick="showModal('m-generate')"><h4>🔍 Generation Deep-Dive</h4><p>What exactly does each textbook say about generating options? From Bardach's "start with the obvious" to Bobrow & Dryzek's five-frame design.</p></div>
+</div>
+<div class="bar-section">
+<h2>Generation vs evaluation: page share</h2>
+<div class="bar-row"><div class="bar-label">Bardach & Patashnik</div><div class="bar-track"><div class="bar-other" style="width:25%"></div><div class="bar-gen" style="width:10%">~15pp</div><div class="bar-eval" style="width:38%">~50pp</div><div class="bar-other" style="width:27%"></div></div></div>
+<div class="bar-row"><div class="bar-label">Weimer & Vining</div><div class="bar-track"><div class="bar-other" style="width:30%"></div><div class="bar-gen" style="width:4%">§</div><div class="bar-eval" style="width:42%">~120pp</div><div class="bar-other" style="width:24%"></div></div></div>
+<div class="bar-row"><div class="bar-label">Patton/Sawicki/Clark ✦</div><div class="bar-track"><div class="bar-other" style="width:25%"></div><div class="bar-gen" style="width:12%">~1ch</div><div class="bar-eval" style="width:38%">~3ch</div><div class="bar-other" style="width:25%"></div></div></div>
+<div class="bar-row"><div class="bar-label">Thissen & Walker ✦</div><div class="bar-track"><div class="bar-other" style="width:25%"></div><div class="bar-gen" style="width:15%">~1.5ch</div><div class="bar-eval" style="width:30%">~3ch</div><div class="bar-other" style="width:30%"></div></div></div>
+<div class="bar-row"><div class="bar-label">Bobrow & Dryzek ✦✦</div><div class="bar-track"><div class="bar-other" style="width:20%"></div><div class="bar-gen" style="width:22%">~3ch</div><div class="bar-eval" style="width:18%">~2ch</div><div class="bar-other" style="width:40%"></div></div></div>
+<div class="bar-row"><div class="bar-label">Nagel ✦</div><div class="bar-track"><div class="bar-other" style="width:25%"></div><div class="bar-gen" style="width:14%">~1.5ch</div><div class="bar-eval" style="width:32%">~3ch</div><div class="bar-other" style="width:29%"></div></div></div>
+<div class="bar-row"><div class="bar-label">Fischer/Miller/Sidney</div><div class="bar-track"><div class="bar-other" style="width:50%"></div><div class="bar-gen" style="width:0"></div><div class="bar-eval" style="width:32%">~8ch</div><div class="bar-other" style="width:18%"></div></div></div>
+</div>
+<div class="note-box"><strong>Bobrow & Dryzek</strong> are the only textbook where generation gets MORE page space than evaluation — their entire book is organized around the generative/design question.</div>
 </div>
 
-<div class="grid">
-  <div class="gh">Textbook</div>
-  <div class="gh">Problem</div>
-  <div class="gh">Evidence</div>
-  <div class="gh col-gen">Generate Options</div>
-  <div class="gh">Criteria</div>
-  <div class="gh">Evaluate</div>
-  <div class="gh">Compare</div>
-  <div class="gh">Decide</div>
-  <div class="gh">Communicate</div>
-
-  <!-- Bardach -->
-  <div class="gl">Bardach & Patashnik <span class="yr">2019</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Define the problem</div>
-  <div class="gc c-evid"><span class="step-num">2</span>Assemble evidence</div>
-  <div class="gc c-gen"><span class="step-num">3</span>Construct alternatives</div>
-  <div class="gc c-crit"><span class="step-num">4</span>Select criteria</div>
-  <div class="gc c-eval"><span class="step-num">5</span>Project outcomes</div>
-  <div class="gc c-comp"><span class="step-num">6</span>Confront trade-offs</div>
-  <div class="gc c-dec"><span class="step-num">7</span>Decide!</div>
-  <div class="gc c-comm"><span class="step-num">8</span>Tell your story</div>
-
-  <!-- Weimer & Vining — criteria BEFORE generation -->
-  <div class="gl">Weimer & Vining <span class="yr">2017</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Understand & model problem</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-gen-thin reordered" title="Book's step 3: after goals/constraints"><span class="step-num">3</span>Identify alternatives (subsection)</div>
-  <div class="gc c-crit reordered" title="Book's step 2: BEFORE alternatives"><span class="step-num">2</span>Goals & constraints</div>
-  <div class="gc c-eval"><span class="step-num">4</span>Predict impacts</div>
-  <div class="gc c-comp"><span class="step-num">5</span>Value & trade-offs</div>
-  <div class="gc c-dec"><span class="step-num">6</span>Recommend</div>
-  <div class="gc c-comm"><span class="step-num">7</span>Communicate</div>
-
-  <!-- Patton, Sawicki & Clark — criteria BEFORE generation -->
-  <div class="gl">Patton, Sawicki & Clark <span class="yr">2013</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Define problem</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-gen reordered" title="Book's step 3: after criteria"><span class="step-num">3</span>Identify alternatives ✦</div>
-  <div class="gc c-crit reordered" title="Book's step 2: BEFORE alternatives"><span class="step-num">2</span>Evaluation criteria</div>
-  <div class="gc c-eval"><span class="step-num">4</span>Evaluate alternatives</div>
-  <div class="gc c-comp"><span class="step-num">5</span>Display & distinguish</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-impl"><span class="step-num">6</span>Implement & monitor</div>
-
-  <!-- Dunn — cycle model, ex-post -->
-  <div class="gl">Dunn <span class="yr">2018</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Problem structuring</div>
-  <div class="gc c-eval" title="Dunn: projecting future consequences of alternatives"><span class="step-num">2</span>Forecasting</div>
-  <div class="gc c-gen-thin" title="Recommendation = prescribing action, contains option ID"><span class="step-num">3</span>Recommendation (contains options)</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-expost" title="EX-POST: observing actual outcomes after implementation"><span class="step-num">4</span>Monitoring ᵖ</div>
-  <div class="gc c-expost" title="EX-POST: appraising policy performance after the fact"><span class="step-num">5</span>Evaluation ᵖ</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na" style="font-size:.6rem">Cycle model; ᵖ = ex-post</div>
-
-  <!-- Thissen & Walker -->
-  <div class="gl">Thissen & Walker <span class="yr">2013</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Problem articulation</div>
-  <div class="gc c-evid"><span class="step-num">2</span>Problem assessment</div>
-  <div class="gc c-gen"><span class="step-num">3</span>Generate alternatives ✦</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-eval"><span class="step-num">4</span>Assess alternatives</div>
-  <div class="gc c-comp"><span class="step-num">5</span>Compare alternatives</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-comm"><span class="step-num">6</span>Communication</div>
-
-  <!-- Enserink (Delft) -->
-  <div class="gl">Enserink et al. (Delft) <span class="yr">2010</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Problem formulation</div>
-  <div class="gc c-evid"><span class="step-num">2</span>System & actor analysis</div>
-  <div class="gc c-gen"><span class="step-num">3</span>Develop alternatives ✦</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-eval"><span class="step-num">4</span>Ex-ante evaluation</div>
-  <div class="gc c-comp"><span class="step-num">5</span>Robustness analysis</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-impl"><span class="step-num">6</span>Implementation strategy</div>
-
-  <!-- Shalita & Schwartz — goals BEFORE generation -->
-  <div class="gl">Shalita & Schwartz <span class="yr">2019</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Define problem</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-gen reordered" title="Book's step 3: after goals"><span class="step-num">3</span>Generate alternatives</div>
-  <div class="gc c-crit reordered" title="Book's step 2: BEFORE alternatives"><span class="step-num">2</span>Set goals</div>
-  <div class="gc c-eval"><span class="step-num">4</span>Analyze (impacts)</div>
-  <div class="gc c-comp"><span class="step-num">5</span>Compare (matrix)</div>
-  <div class="gc c-dec"><span class="step-num">6</span>Recommend</div>
-  <div class="gc c-comm"><span class="step-num">7</span>Communicate</div>
-
-  <!-- Bromell -->
-  <div class="gl">Bromell <span class="yr">2024</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Define issue</div>
-  <div class="gc c-evid"><span class="step-num">2</span>Evidence base</div>
-  <div class="gc c-gen-thin"><span class="step-num">3</span>Identify options</div>
-  <div class="gc c-crit"><span class="step-num">4</span>Criteria</div>
-  <div class="gc c-eval"><span class="step-num">5</span>Assess options</div>
-  <div class="gc c-comp"><span class="step-num">6</span>Compare options</div>
-  <div class="gc c-dec"><span class="step-num">7</span>Recommend</div>
-  <div class="gc c-comm"><span class="step-num">8</span>Communicate</div>
-
-  <!-- McLaughlin — criteria BEFORE generation -->
-  <div class="gl">McLaughlin & McLaughlin <span class="yr">2019</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Identify problem</div>
-  <div class="gc c-evid"><span class="step-num">2</span>Assemble evidence</div>
-  <div class="gc c-gen-thin reordered" title="Book's step 4: after criteria"><span class="step-num">4</span>Identify alternatives</div>
-  <div class="gc c-crit reordered" title="Book's step 3: BEFORE alternatives"><span class="step-num">3</span>Establish criteria</div>
-  <div class="gc c-eval"><span class="step-num">5</span>Evaluate alternatives</div>
-  <div class="gc c-comp"><span class="step-num">6</span>Weigh criteria</div>
-  <div class="gc c-dec"><span class="step-num">7</span>Decide</div>
-  <div class="gc c-na">—</div>
-
-  <!-- Knoepfel — FIXED column positions -->
-  <div class="gl">Knoepfel et al. <span class="yr">2007</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Agenda setting</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-gen-thin"><span class="step-num">2</span>Policy formulation</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-dec"><span class="step-num">3</span>Decision / adoption</div>
-  <div class="gc c-na" style="font-size:.58rem"><span class="step-num" style="background:var(--orange)">4</span>Impl → <span class="step-num" style="background:var(--red)">5</span>Eval (ex-post cycle)</div>
-
-  <!-- Kingdon -->
-  <div class="gl" style="color:var(--text-dim)">Kingdon <span class="yr">1984</span></div>
-  <div class="gc c-prob">Problem stream</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-gen-thin">Policy stream ("primeval soup")</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-dec">Policy window</div>
-  <div class="gc c-na" style="font-size:.6rem">Descriptive, not prescriptive</div>
-
-  <!-- ═══ NEW TEXTBOOKS (added 2026-08-08) ═══ -->
-
-  <!-- Howlett, Ramesh & Perl — 5-stage policy cycle -->
-  <div class="gl">Howlett, Ramesh & Perl <span class="yr">2020</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Agenda setting</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-gen-thin"><span class="step-num">2</span>Policy formulation</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-dec"><span class="step-num">3</span>Decision-making</div>
-  <div class="gc c-na" style="font-size:.58rem"><span class="step-num" style="background:var(--orange)">4</span>Impl → <span class="step-num" style="background:var(--red)">5</span>Eval (cycle)</div>
-
-  <!-- Kraft & Furlong -->
-  <div class="gl">Kraft & Furlong <span class="yr">2021</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Problem definition & agenda</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-gen-thin"><span class="step-num">2</span>Policy formulation</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-dec"><span class="step-num">3</span>Policy legitimation</div>
-  <div class="gc c-na" style="font-size:.58rem"><span class="step-num" style="background:var(--orange)">4</span>Impl → <span class="step-num" style="background:var(--red)">5</span>Eval (cycle)</div>
-
-  <!-- Anderson -->
-  <div class="gl">Anderson <span class="yr">2015</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Problem ID & agenda setting</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-gen-thin"><span class="step-num">2</span>Policy formulation</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-dec"><span class="step-num">3</span>Policy adoption</div>
-  <div class="gc c-na" style="font-size:.58rem"><span class="step-num" style="background:var(--orange)">4</span>Impl → <span class="step-num" style="background:var(--red)">5</span>Eval (cycle)</div>
-
-  <!-- Mintrom — explicit step sequence with "solutions" -->
-  <div class="gl">Mintrom <span class="yr">2012</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Define problem</div>
-  <div class="gc c-evid"><span class="step-num">2</span>Set objectives</div>
-  <div class="gc c-gen"><span class="step-num">3</span>Identify alternatives</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-eval"><span class="step-num">4</span>Analyze alternatives</div>
-  <div class="gc c-comp"><span class="step-num">5</span>Compare alternatives</div>
-  <div class="gc c-dec"><span class="step-num">6</span>Decision</div>
-  <div class="gc c-comm"><span class="step-num">7</span>Communicate</div>
-
-  <!-- Pal — cycle + design -->
-  <div class="gl">Pal <span class="yr">2014</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Problem recognition</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-gen-thin"><span class="step-num">2</span>Policy formulation</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-dec"><span class="step-num">3</span>Decision-making</div>
-  <div class="gc c-na" style="font-size:.58rem"><span class="step-num" style="background:var(--orange)">4</span>Impl → <span class="step-num" style="background:var(--red)">5</span>Eval (cycle)</div>
-
-  <!-- Birkland — stages model -->
-  <div class="gl">Birkland <span class="yr">2020</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Issue emergence & agenda</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-gen-thin"><span class="step-num">2</span>Alternative selection</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-dec"><span class="step-num">3</span>Enactment</div>
-  <div class="gc c-na" style="font-size:.58rem"><span class="step-num" style="background:var(--orange)">4</span>Impl → <span class="step-num" style="background:var(--red)">5</span>Eval (cycle)</div>
-
-  <!-- Mead — Bardach-style practical -->
-  <div class="gl">Mead <span class="yr">2019</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Define problem</div>
-  <div class="gc c-evid"><span class="step-num">2</span>Assemble evidence</div>
-  <div class="gc c-gen-thin"><span class="step-num">3</span>Propose alternatives</div>
-  <div class="gc c-crit"><span class="step-num">4</span>Set criteria</div>
-  <div class="gc c-eval"><span class="step-num">5</span>Evaluate options</div>
-  <div class="gc c-comp"><span class="step-num">6</span>Compare & trade-offs</div>
-  <div class="gc c-dec"><span class="step-num">7</span>Recommend</div>
-  <div class="gc c-comm"><span class="step-num">8</span>Communicate</div>
-
-  <!-- Bobrow & Dryzek — DESIGN-oriented, not step-based but has a framework -->
-  <div class="gl" style="color:var(--gold)">Bobrow & Dryzek <span class="yr">1987</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Problem framing</div>
-  <div class="gc c-evid"><span class="step-num">2</span>Multiple frames analysis</div>
-  <div class="gc c-gen" title="Design-oriented: draws on 5 intellectual traditions"><span class="step-num">3</span>Design options ✦✦</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-eval"><span class="step-num">4</span>Frame-relative evaluation</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-dec"><span class="step-num">5</span>Contextual choice</div>
-  <div class="gc c-na" style="font-size:.6rem">Design model, cross-domain</div>
-
-  <!-- Nagel — methods for generating -->
-  <div class="gl">Nagel <span class="yr">1988</span></div>
-  <div class="gc c-prob"><span class="step-num">1</span>Problem formulation</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-gen" title="Discusses analogy, decomposition, optimization as generation methods"><span class="step-num">2</span>Generate alternatives ✦</div>
-  <div class="gc c-crit"><span class="step-num">3</span>Criteria identification</div>
-  <div class="gc c-eval"><span class="step-num">4</span>Evaluate</div>
-  <div class="gc c-comp"><span class="step-num">5</span>Integration & synthesis</div>
-  <div class="gc c-dec"><span class="step-num">6</span>Recommend</div>
-  <div class="gc c-na">—</div>
-
-  <!-- Stone — non-step but important framework -->
-  <div class="gl" style="color:var(--text-dim)">Stone <span class="yr">2012</span></div>
-  <div class="gc c-prob">Goals (equity, efficiency, liberty, security)</div>
-  <div class="gc c-na">Problems (symbols, numbers, causes)</div>
-  <div class="gc c-gen-thin">Solutions (inducements, rules, facts, rights, powers)</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na">—</div>
-  <div class="gc c-na" style="font-size:.6rem">Framework, not step sequence</div>
-
-  <!-- Non-step books -->
-  <div class="gl" style="color:var(--gray)">Wildavsky & Peters <span class="yr">2018</span></div>
-  <div class="gc c-na" style="grid-column:span 8;text-align:left;padding-left:.8rem">No step sequence — essay-based "art and craft" approach.</div>
-
-  <div class="gl" style="color:var(--gray)">Fischer, Miller & Sidney <span class="yr">2007</span></div>
-  <div class="gc c-na" style="grid-column:span 8;text-align:left;padding-left:.8rem">Edited handbook. Methods section: CBA, risk analysis, evaluation — no chapter on option generation.</div>
-
-  <div class="gl" style="color:var(--gray)">Morgan, Henrion & Small <span class="yr">1990</span></div>
-  <div class="gc c-na" style="grid-column:span 8;text-align:left;padding-left:.8rem">Uncertainty methods only. No process model.</div>
+<!-- ═══ TAB 1: COVERAGE ═══ -->
+<div class="tab-body" id="tab-coverage">
+<div class="legend"><div class="legend-item"><div class="legend-swatch" style="background:var(--blue)"></div>Problem</div><div class="legend-item"><div class="legend-swatch" style="background:var(--purple)"></div>Evidence</div><div class="legend-item"><div class="legend-swatch" style="background:var(--gold)"></div><strong>Generation</strong></div><div class="legend-item"><div class="legend-swatch" style="background:var(--teal)"></div>Criteria</div><div class="legend-item"><div class="legend-swatch" style="background:var(--red)"></div>Evaluate</div><div class="legend-item"><div class="legend-swatch" style="background:#c0392b"></div>Compare</div><div class="legend-item"><div class="legend-swatch" style="background:var(--green)"></div>Decide</div><div class="legend-item"><div class="legend-swatch" style="background:#95a5a6"></div>Comm</div><div class="legend-item"><div class="legend-swatch" style="background:var(--orange)"></div>Impl</div><div class="legend-item" style="margin-left:.6rem"><span style="border:1px dashed var(--text-dim);padding:0 3px;font-size:.63rem;border-radius:2px">dashed</span>=reordered</div></div>
+<p style="font-size:.72rem;color:var(--text-dim);margin-bottom:.5rem">Hover any cell for what the textbook recommends and approximate page count.</p>
+<div class="phase-btns"><span style="font-size:.7rem;color:var(--text-dim)">Cross-textbook:</span>
+<button class="phase-btn" onclick="showModal('m-problem')">Problem</button>
+<button class="phase-btn" onclick="showModal('m-generate')" style="border-color:var(--gold);color:var(--gold)">Generation</button>
+<button class="phase-btn" onclick="showModal('m-criteria')">Criteria</button>
+<button class="phase-btn" onclick="showModal('m-evaluate')">Evaluation</button>
+<button class="phase-btn" onclick="showModal('m-decide')">Decision</button>
+<button class="phase-btn" onclick="showModal('m-sequence')">Sequence</button>
+</div>
+<div class="grid" id="coverage-grid"></div>
+<div class="note-box"><strong>Reading step numbers:</strong> Where Generate shows ③ and Criteria shows ②, that book puts criteria <em>before</em> generation (dashed borders). <strong>5 textbooks</strong> do this.</div>
 </div>
 
-<div class="note-box">
-  <strong>Reading the step numbers:</strong> Where a circled number in the Generate column (e.g. ③) is HIGHER than the Criteria column (e.g. ②), that textbook puts criteria <em>before</em> generation — the analyst is told to know what they're looking for before they search. Four textbooks do this (dashed borders). This is itself a finding: the field does not even agree on whether you should know your criteria before you look for options.
-</div>
-
-<div class="insight">
-  <h3>The structural finding</h3>
-  <p><strong>17 of 21 textbooks name a generation step</strong> — the slot exists across all traditions. But <strong>only 3–4</strong> give methodological guidance for HOW to generate (Thissen & Walker, Enserink/Delft, Patton/Sawicki/Clark, Nagel — marked ✦). <strong>Only Bobrow & Dryzek (✦✦)</strong> explicitly draw on multiple intellectual traditions for option design — the closest any textbook comes to cross-domain search. The evaluation side has CBA, MCA, sensitivity testing, robustness analysis, criteria weighting, trade-off matrices — each with its own chapter. Generation gets a checkbox.</p>
-</div>
-
-</div><!-- /tab-coverage -->
-
-<!-- ═══════════════ TAB 2: SWIM-LANE SEQUENCES ═══════════════ -->
+<!-- ═══ TAB 2: SWIM LANES ═══ -->
 <div class="tab-body" id="tab-sequence">
-
-<p style="font-size:.8rem;color:var(--text-dim);margin-bottom:1rem">
-  Each textbook's steps in its <strong>own prescribed order</strong>, left to right. Color = phase type. Click any step for details.
-  <br>Notice: 4 textbooks place criteria/goals <em>before</em> generation (teal before gold) — visible here, hidden in the coverage matrix.
-</p>
-
+<p style="font-size:.72rem;color:var(--text-dim);margin-bottom:.7rem">Each book's steps in its <strong>own order</strong>. Hover for details. 5 books place criteria (teal) before generation (gold).</p>
 <div class="swim" id="swim-container"></div>
-
-<div class="insight">
-  <h3>What the sequences reveal</h3>
-  <p>Two patterns are invisible in the coverage matrix but jump out here:</p>
-  <p><strong>1. Criteria-first vs generation-first.</strong> Bardach and his followers put generation (gold) before criteria (teal). But Patton/Sawicki/Clark, Weimer & Vining, McLaughlin, and Shalita & Schwartz reverse this: decide what you're looking for, <em>then</em> look. Neither camp acknowledges the other's ordering as a design choice — it is simply assumed.</p>
-  <p><strong>2. The evaluation tail.</strong> Every textbook that has a generation step follows it with 2–4 evaluation/comparison steps (red blocks). The visual weight is unmistakable: a thin gold bar followed by a long red tail. That is the asymmetry the paper measures.</p>
+<div class="bar-section">
+<h2>Generation vs evaluation: page share</h2>
+<div class="bar-row"><div class="bar-label">Bardach</div><div class="bar-track"><div class="bar-other" style="width:25%"></div><div class="bar-gen" style="width:10%">~15pp</div><div class="bar-eval" style="width:38%">~50pp</div><div class="bar-other" style="width:27%"></div></div></div>
+<div class="bar-row"><div class="bar-label">Weimer & Vining</div><div class="bar-track"><div class="bar-other" style="width:30%"></div><div class="bar-gen" style="width:4%">§</div><div class="bar-eval" style="width:42%">~120pp</div><div class="bar-other" style="width:24%"></div></div></div>
+<div class="bar-row"><div class="bar-label">Bobrow & Dryzek ✦✦</div><div class="bar-track"><div class="bar-other" style="width:20%"></div><div class="bar-gen" style="width:22%">~3ch</div><div class="bar-eval" style="width:18%">~2ch</div><div class="bar-other" style="width:40%"></div></div></div>
 </div>
-
-<div class="note-box">
-  <strong>New finding from expanded corpus:</strong> Adding 10 textbooks (Howlett/Ramesh/Perl, Kraft/Furlong, Anderson, Mintrom, Pal, Birkland, Mead, Bobrow/Dryzek, Nagel, Stone) <strong>reinforces the pattern</strong>: 6 more generation slots, only 2 more generation methods (Nagel ✦, Bobrow/Dryzek ✦✦). The cycle-model textbooks (Howlett, Kraft, Anderson, Pal, Birkland) all have a "formulation" stage but treat it as a political process, not an analytical method. <strong>Bobrow & Dryzek (1987)</strong> is the one partial exception: their design-oriented framework explicitly draws on 5 intellectual traditions (welfare economics, public choice, social structure, information processing, political philosophy) — the closest any textbook comes to cross-domain option generation.
-</div>
-
-</div><!-- /tab-sequence -->
-
-<!-- ═══════════════ MODALS ═══════════════ -->
-<div class="modal-overlay" id="m-problem" onclick="if(event.target===this)closeModal(this.id)">
-<div class="modal">
-  <button class="modal-close" onclick="closeModal('m-problem')">&times;</button>
-  <h3>Problem Definition — cross-textbook differences</h3>
-  <ul>
-    <li><strong>Bardach:</strong> "Define the problem" — a brief, client-oriented scoping. Emphasis on keeping it small and actionable.</li>
-    <li><strong>Weimer & Vining:</strong> Three sub-steps: receive the problem, delineate it analytically, model it. Much more structured — includes market-failure and government-failure frameworks as diagnostic tools.</li>
-    <li><strong>Dunn:</strong> "Problem structuring" — an explicit analytical procedure, not just scoping. Includes boundary analysis, classificational analysis, hierarchy analysis. The most methodologically rich problem step.</li>
-    <li><strong>Enserink/Delft:</strong> Three steps: problem formulation + system analysis (causal mapping) + actor analysis (stakeholder mapping). The multi-actor tradition treats problem definition as inherently political.</li>
-    <li><strong>Kingdon:</strong> Problem definition is a political process, not an analytical one — problems are "constructed" through indicators, focusing events, and feedback.</li>
-  </ul>
-  <p><strong>The pattern:</strong> Problem definition ranges from a 2-page scoping exercise (Bardach) to a multi-chapter analytical framework (Dunn, Enserink). This variation receives far less attention than the evaluation-method variation.</p>
+<div class="insight"><h3>What the sequences reveal</h3>
+<p><strong>1. Criteria-first vs generation-first.</strong> Bardach, Bromell, Thissen & Walker, Enserink, Mead, and Nagel put generation before criteria. But PSC, W&V, McLaughlin, S&S, and Mintrom reverse this.</p>
+<p><strong>2. The evaluation tail.</strong> Every analytical textbook follows generation with 2–4 red blocks. Cycle-model books go formulation→decision with no analytical evaluation in between.</p>
 </div>
 </div>
 
-<div class="modal-overlay" id="m-generate" onclick="if(event.target===this)closeModal(this.id)">
-<div class="modal">
-  <button class="modal-close" onclick="closeModal('m-generate')">&times;</button>
-  <h3>Option Generation — cross-textbook differences</h3>
-  <ul>
-    <li><strong>Bardach:</strong> "Start with the obvious" + "ask practitioners." ~15 pages, mostly cautionary ("don't have too many"). No method.</li>
-    <li><strong>Weimer & Vining:</strong> A subsection, not a chapter. Lists sources (existing policy, theoretical models, modified proposals) but no search protocol.</li>
-    <li><strong>Patton, Sawicki & Clark ✦:</strong> A full chapter. Named techniques: no-action baseline, quick surveys, literature review, cross-jurisdictional comparison, policy-instrument typologies, brainstorming. The closest to a structured method in the Bardach tradition.</li>
-    <li><strong>Thissen & Walker ✦:</strong> Explicitly separates generation from assessment within "solution analysis." Discusses scenario-based option development and design-oriented approaches. The only textbook that treats generation as a methodological problem of comparable dignity to evaluation.</li>
-    <li><strong>Enserink/Delft ✦:</strong> Scenarios + option development as a structured phase. The TU Delft tradition gives generation more weight than the Anglo-American mainstream.</li>
-    <li><strong>Everyone else:</strong> "Identify alternatives" as a named step with ~0.5–1 chapter. Guidance: brainstorm, consult stakeholders, look at what others did.</li>
-  </ul>
-  <p><strong>The gap:</strong> The evaluation side has CBA, MCA, sensitivity analysis, robustness testing — each a named method with its own textbook chapter and sometimes its own course. The generation side has "brainstorm." The step exists; the discipline does not.</p>
-  <p><strong>The missing method:</strong> Zero textbooks describe cross-domain search — systematically looking outside the analyst's home discipline for mechanisms, instruments, or design patterns that bear on the problem but use different vocabulary.</p>
-</div>
-</div>
+<!-- MODALS -->
+<div class="modal-overlay" id="m-problem" onclick="if(event.target===this)closeModal(this.id)"><div class="modal"><button class="modal-close" onclick="closeModal('m-problem')">&times;</button><h3>Problem Definition</h3><ul><li><strong>Bardach:</strong> Keep it small, actionable. ~10pp.</li><li><strong>Weimer & Vining:</strong> 3 sub-steps with market/government failure frameworks.</li><li><strong>Dunn:</strong> "Problem structuring" — boundary, classificational, hierarchy analysis. Most methodologically rich.</li><li><strong>Enserink/Delft:</strong> Problem + system analysis + actor analysis. Multi-actor tradition.</li><li><strong>Cycle models:</strong> "Agenda setting" — how problems reach the political agenda. Descriptive.</li><li><strong>Bobrow & Dryzek:</strong> Problem framing through 5 intellectual traditions — the problem looks different from each.</li></ul></div></div>
 
-<div class="modal-overlay" id="m-criteria" onclick="if(event.target===this)closeModal(this.id)">
-<div class="modal">
-  <button class="modal-close" onclick="closeModal('m-criteria')">&times;</button>
-  <h3>Criteria Selection — cross-textbook differences</h3>
-  <ul>
-    <li><strong>Sequence disagreement:</strong> Bardach, Bromell, and Thissen & Walker put criteria AFTER generation. Patton/Sawicki/Clark, Weimer & Vining, McLaughlin, and Shalita & Schwartz put criteria BEFORE generation. The field does not agree on whether you should know what you're evaluating before you generate options.</li>
-    <li><strong>Bardach:</strong> "Select the criteria" — efficiency, equity, liberty, political feasibility. Presented as a menu to choose from.</li>
-    <li><strong>Weimer & Vining:</strong> "Goals and constraints" — framed as the client's objectives plus legal/political/administrative constraints. More explicitly client-oriented than Bardach.</li>
-    <li><strong>Dunn:</strong> Criteria are embedded in the "Recommendation" procedure rather than a separate step. Discusses optimization, satisficing, and mixed scanning as decision rules.</li>
-    <li><strong>Enserink/Delft:</strong> Criteria emerge from the actor analysis — different stakeholders have different criteria, and the framework makes this explicit.</li>
-  </ul>
-  <p><strong>Why the order matters for policy myopia:</strong> If you set criteria BEFORE generating options, your criteria constrain what options you can see. If you generate first, your options inform what criteria are relevant. The criteria-first approach may itself be a mechanism for premature closure — but no textbook discusses this.</p>
-</div>
-</div>
+<div class="modal-overlay" id="m-generate" onclick="if(event.target===this)closeModal(this.id)"><div class="modal"><button class="modal-close" onclick="closeModal('m-generate')">&times;</button><h3>Option Generation</h3><ul><li><strong>Bardach:</strong> "Start with the obvious" + "ask practitioners." ~15pp. No method.</li><li><strong>Weimer & Vining:</strong> A subsection. Lists sources, no protocol.</li><li><strong>Patton/Sawicki/Clark ✦:</strong> Full chapter. No-action baseline, surveys, lit review, cross-jurisdictional comparison, policy-instrument typologies.</li><li><strong>Thissen & Walker ✦:</strong> Separates generation from assessment. Scenario-based development. The only text treating generation as methodologically comparable to evaluation.</li><li><strong>Enserink/Delft ✦:</strong> Scenarios + structured development. TU Delft tradition.</li><li><strong>Nagel ✦:</strong> Analogy, decomposition, optimization as techniques. Pre-2000, largely forgotten.</li><li><strong>Bobrow & Dryzek ✦✦:</strong> 5 intellectual traditions for option <em>design</em>. Multi-perspectival, not mechanism-transfer cross-domain search — but the closest any textbook comes.</li><li><strong>Cycle models:</strong> "Formulation" describes WHERE options emerge politically. Not a method.</li><li><strong>Everyone else:</strong> ~0.5–1ch. Brainstorm, consult, look at what others did.</li></ul><p><strong>The gap:</strong> Evaluation has CBA, MCA, sensitivity analysis — each a named method with its own chapter. Generation has "brainstorm." The step exists; the discipline does not.</p></div></div>
 
-<div class="modal-overlay" id="m-evaluate" onclick="if(event.target===this)closeModal(this.id)">
-<div class="modal">
-  <button class="modal-close" onclick="closeModal('m-evaluate')">&times;</button>
-  <h3>Evaluation & Comparison — cross-textbook differences</h3>
-  <ul>
-    <li><strong>Universal presence:</strong> Every step-sequence textbook devotes multiple chapters to evaluation. This is the methodologically richest part of every book.</li>
-    <li><strong>Bardach:</strong> Two steps: "Project the outcomes" (predict what each option does) + "Confront the trade-offs" (compare across criteria). Emphasizes qualitative reasoning.</li>
-    <li><strong>Weimer & Vining:</strong> Most extensive treatment: impact assessment, cost-benefit analysis, cost-effectiveness analysis, multi-goal analysis. Multiple chapters, ~120 pages.</li>
-    <li><strong>Enserink/Delft:</strong> Ex-ante evaluation (multi-criteria analysis, CBA) + robustness analysis (sensitivity, scenario testing). Two distinct analytical phases.</li>
-    <li><strong>Dunn:</strong> Forecasting (outcome projection) is a separate procedure from Evaluation (ex-post performance assessment). Note: Dunn's Monitoring and Evaluation are POST-implementation — they assess what happened, not what might happen.</li>
-    <li><strong>Thissen & Walker:</strong> Explicitly separate "Assess alternatives" (per-option analysis) from "Compare alternatives" (cross-option ranking). The only textbook that formally distinguishes within-option from between-option evaluation.</li>
-  </ul>
-  <p><strong>The contrast with generation:</strong> Evaluation has named methods (CBA, MCA, sensitivity analysis), quantitative frameworks, software tools, and entire graduate courses. Generation has "brainstorm." The asymmetry is not accidental — it reflects what the field has invested in formalizing.</p>
-</div>
-</div>
+<div class="modal-overlay" id="m-criteria" onclick="if(event.target===this)closeModal(this.id)"><div class="modal"><button class="modal-close" onclick="closeModal('m-criteria')">&times;</button><h3>Criteria Selection</h3><ul><li><strong>Criteria-first (5 books):</strong> PSC, W&V, McLaughlin, S&S, Mintrom — know what you're looking for before you search.</li><li><strong>Generation-first (6 books):</strong> Bardach, Bromell, T&W, Enserink, Mead, Nagel — generate then evaluate.</li><li><strong>Bardach:</strong> Efficiency, equity, liberty, feasibility. A menu.</li><li><strong>W&V:</strong> Client objectives + constraints.</li><li><strong>Enserink/Delft:</strong> Criteria from actor analysis — different stakeholders, different criteria.</li></ul><p><strong>Why order matters:</strong> Criteria-first constrains what you can see. No textbook discusses this as a design choice.</p></div></div>
 
-<div class="modal-overlay" id="m-decide" onclick="if(event.target===this)closeModal(this.id)">
-<div class="modal">
-  <button class="modal-close" onclick="closeModal('m-decide')">&times;</button>
-  <h3>Decision & Communication — cross-textbook differences</h3>
-  <ul>
-    <li><strong>Bardach:</strong> "Decide!" (one page) + "Tell your story" (a chapter on writing the policy memo). The decision itself gets almost no methodological treatment — it is treated as self-evident once the trade-offs are confronted.</li>
-    <li><strong>Knoepfel:</strong> "Decision/adoption" is a political-process stage, not an analytical step. The analyst does not decide; the political system does.</li>
-    <li><strong>Kingdon:</strong> The "policy window" — decisions happen when the three streams couple, often by chance. No methodology; the whole point is that decisions are contingent.</li>
-    <li><strong>Cycle models (Dunn, Knoepfel):</strong> Include implementation and ex-post evaluation as additional stages after the decision. The rational-comprehensive models (Bardach) stop at the decision or the memo.</li>
-  </ul>
-  <p><strong>The split:</strong> Rational-comprehensive textbooks treat the decision as the endpoint of analysis. Cycle/process textbooks treat it as one stage in an ongoing loop. This affects what "option generation" means — is it a one-shot search, or a continuous process of policy learning?</p>
-</div>
-</div>
+<div class="modal-overlay" id="m-evaluate" onclick="if(event.target===this)closeModal(this.id)"><div class="modal"><button class="modal-close" onclick="closeModal('m-evaluate')">&times;</button><h3>Evaluation & Comparison</h3><ul><li><strong>Universal:</strong> Every analytical textbook devotes multiple chapters. The richest part of every book.</li><li><strong>Bardach:</strong> "Project outcomes" + "Confront trade-offs." Qualitative.</li><li><strong>W&V:</strong> CBA, CEA, multi-goal analysis. ~120pp. Most extensive.</li><li><strong>T&W:</strong> Formally separates "Assess" (per-option) from "Compare" (cross-option). Unique.</li><li><strong>Cycle models:</strong> "Evaluation" is ex-post (did it work?) not ex-ante (which option is best?).</li></ul></div></div>
 
-<div class="modal-overlay" id="m-sequence" onclick="if(event.target===this)closeModal(this.id)">
-<div class="modal">
-  <button class="modal-close" onclick="closeModal('m-sequence')">&times;</button>
-  <h3>Sequence Order — the hidden disagreement</h3>
-  <p>The textbooks disagree on something they never discuss: <strong>when in the process should options be generated?</strong></p>
-  <ul>
-    <li><strong>Generation-first (Bardach template):</strong> Problem → Evidence → <strong>Generate</strong> → Criteria → Evaluate. Used by: Bardach, Bromell, Thissen & Walker, Enserink.</li>
-    <li><strong>Criteria-first:</strong> Problem → <strong>Criteria/Goals</strong> → <strong>Generate</strong> → Evaluate. Used by: Patton/Sawicki/Clark, Weimer & Vining, McLaughlin, Shalita & Schwartz.</li>
-    <li><strong>Embedded in formulation:</strong> Agenda → <strong>Formulation</strong> (= generation + negotiation) → Decision. Used by: Knoepfel, Kingdon (descriptive).</li>
-    <li><strong>Non-sequential:</strong> Five procedures applied iteratively, no fixed order. Used by: Dunn.</li>
-  </ul>
-  <p><strong>Why this matters for policy myopia:</strong> The criteria-first approach may <em>constrain</em> what options the analyst can see — you search within what your criteria make visible. The generation-first approach risks generating options without knowing what matters. Neither camp acknowledges the other's ordering as a choice with consequences. The coverage matrix (Tab 1) erases this variation by forcing all textbooks into Bardach's column order. The sequence view (Tab 2) makes it visible.</p>
-</div>
-</div>
+<div class="modal-overlay" id="m-decide" onclick="if(event.target===this)closeModal(this.id)"><div class="modal"><button class="modal-close" onclick="closeModal('m-decide')">&times;</button><h3>Decision & Communication</h3><ul><li><strong>Bardach:</strong> "Decide!" (~1p) + "Tell your story" (~15pp). Decision gets almost no treatment.</li><li><strong>Cycle models:</strong> Decision/adoption is political. The analyst doesn't decide.</li><li><strong>B&D:</strong> "Contextual choice" — the right option depends on which frame you're in.</li></ul></div></div>
+
+<div class="modal-overlay" id="m-sequence" onclick="if(event.target===this)closeModal(this.id)"><div class="modal"><button class="modal-close" onclick="closeModal('m-sequence')">&times;</button><h3>Sequence Order — the hidden disagreement</h3><ul><li><strong>Generation-first:</strong> Bardach, Bromell, T&W, Enserink, Mead, Nagel.</li><li><strong>Criteria-first:</strong> PSC, W&V, McLaughlin, S&S, Mintrom.</li><li><strong>Embedded in formulation:</strong> Howlett, Kraft, Anderson, Pal, Birkland, Knoepfel, Kingdon.</li><li><strong>Non-sequential:</strong> Dunn (iterative cycle).</li><li><strong>Design-oriented:</strong> Bobrow & Dryzek.</li></ul><p><strong>Why it matters:</strong> Criteria-first may constrain what options you see. The coverage matrix forces Bardach's order; the swim-lane view shows the real sequences.</p></div></div>
 
 <div class="footnote">
-  <strong>Source:</strong> 38 textbooks from <a href="https://www.zotero.org/groups/2366690/policy_analysis">Zotero group 2366690</a>, collection "Textbooks" (NHDIIUXL); 21 with explicit step sequences or process models shown here. ✦ = generation method beyond "brainstorm/consult." ✦✦ = cross-domain design framework.
-  <strong>Murderboard:</strong> Reviewed by two independent Claude Opus 4.6 agents (blind round 1); 12 blockers resolved. Expanded with 10 additional textbooks same session.
-  <br><strong>Generated:</strong> 2026-08-08 for the <a href="https://drive.google.com/drive/folders/1IpA1Aha-N2QoKffFwcqehRPoBuYaS5sQ">policy myopia method paper</a>.
+<strong>Source:</strong> <a href="https://www.zotero.org/groups/2366690/policy_analysis">Zotero group 2366690</a>, "Textbooks." ✦ = generation method. ✦✦ = multi-perspectival design.
+<strong>Murderboard:</strong> 2 rounds × 2 independent Claude Opus 4.6 agents. <strong>Generated:</strong> 2026-08-08.
 </div>
 
 <script>
-// Tab switching
-function switchTab(id){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.tab-body').forEach(t=>t.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-  event.target.classList.add('active');
-}
-
-// Modals
+function switchTab(id){document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('active',['insights','coverage','sequence'][i]===id)});document.querySelectorAll('.tab-body').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active')}
 function showModal(id){document.getElementById(id).classList.add('show')}
 function closeModal(id){document.getElementById(id).classList.remove('show')}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-overlay.show').forEach(m=>m.classList.remove('show'))});
 
-// Build swim lanes (Tab 2)
-const books = [
-  {name:'Bardach & Patashnik',yr:'2019',steps:[
-    {label:'Define problem',cls:'c-prob'},{label:'Assemble evidence',cls:'c-evid'},
-    {label:'Construct alternatives',cls:'c-gen'},{label:'Select criteria',cls:'c-crit'},
-    {label:'Project outcomes',cls:'c-eval'},{label:'Confront trade-offs',cls:'c-comp'},
-    {label:'Decide!',cls:'c-dec'},{label:'Tell your story',cls:'c-comm'}]},
-  {name:'Weimer & Vining',yr:'2017',steps:[
-    {label:'Understand problem',cls:'c-prob'},{label:'Goals & constraints',cls:'c-crit'},
-    {label:'Identify alternatives',cls:'c-gen-thin'},{label:'Predict impacts',cls:'c-eval'},
-    {label:'Value & trade-offs',cls:'c-comp'},{label:'Recommend',cls:'c-dec'},
-    {label:'Communicate',cls:'c-comm'}]},
-  {name:'Patton, Sawicki & Clark',yr:'2013',steps:[
-    {label:'Define problem',cls:'c-prob'},{label:'Evaluation criteria',cls:'c-crit'},
-    {label:'Identify alternatives ✦',cls:'c-gen'},{label:'Evaluate',cls:'c-eval'},
-    {label:'Display & distinguish',cls:'c-comp'},{label:'Implement & monitor',cls:'c-impl'}]},
-  {name:'Dunn',yr:'2018',steps:[
-    {label:'Problem structuring',cls:'c-prob'},{label:'Forecasting',cls:'c-eval'},
-    {label:'Recommendation',cls:'c-gen-thin'},{label:'Monitoring (ex-post)',cls:'c-expost'},
-    {label:'Evaluation (ex-post)',cls:'c-expost'}]},
-  {name:'Thissen & Walker',yr:'2013',steps:[
-    {label:'Problem articulation',cls:'c-prob'},{label:'Problem assessment',cls:'c-evid'},
-    {label:'Generate alternatives ✦',cls:'c-gen'},{label:'Assess alternatives',cls:'c-eval'},
-    {label:'Compare alternatives',cls:'c-comp'},{label:'Communication',cls:'c-comm'}]},
-  {name:'Enserink et al. (Delft)',yr:'2010',steps:[
-    {label:'Problem formulation',cls:'c-prob'},{label:'System & actor analysis',cls:'c-evid'},
-    {label:'Develop alternatives ✦',cls:'c-gen'},{label:'Ex-ante evaluation',cls:'c-eval'},
-    {label:'Robustness analysis',cls:'c-comp'},{label:'Implementation strategy',cls:'c-impl'}]},
-  {name:'Shalita & Schwartz',yr:'2019',steps:[
-    {label:'Define problem',cls:'c-prob'},{label:'Set goals',cls:'c-crit'},
-    {label:'Generate alternatives',cls:'c-gen'},{label:'Analyze (impacts)',cls:'c-eval'},
-    {label:'Compare (matrix)',cls:'c-comp'},{label:'Recommend',cls:'c-dec'},
-    {label:'Communicate',cls:'c-comm'}]},
-  {name:'Bromell',yr:'2024',steps:[
-    {label:'Define issue',cls:'c-prob'},{label:'Evidence base',cls:'c-evid'},
-    {label:'Identify options',cls:'c-gen-thin'},{label:'Criteria',cls:'c-crit'},
-    {label:'Assess options',cls:'c-eval'},{label:'Compare options',cls:'c-comp'},
-    {label:'Recommend',cls:'c-dec'},{label:'Communicate',cls:'c-comm'}]},
-  {name:'McLaughlin & McLaughlin',yr:'2019',steps:[
-    {label:'Identify problem',cls:'c-prob'},{label:'Assemble evidence',cls:'c-evid'},
-    {label:'Establish criteria',cls:'c-crit'},{label:'Identify alternatives',cls:'c-gen-thin'},
-    {label:'Evaluate',cls:'c-eval'},{label:'Weigh criteria',cls:'c-comp'},
-    {label:'Decide',cls:'c-dec'}]},
-  {name:'Knoepfel et al.',yr:'2007',steps:[
-    {label:'Agenda setting',cls:'c-prob'},{label:'Policy formulation',cls:'c-gen-thin'},
-    {label:'Decision/adoption',cls:'c-dec'},{label:'Implementation',cls:'c-impl'},
-    {label:'Evaluation (ex-post)',cls:'c-expost'}]},
-  {name:'Kingdon',yr:'1984',steps:[
-    {label:'Problem stream',cls:'c-prob'},{label:'Policy stream',cls:'c-gen-thin'},
-    {label:'Political stream',cls:'c-na'},{label:'Policy window',cls:'c-dec'}]},
-  // ═══ NEW TEXTBOOKS ═══
-  {name:'Howlett, Ramesh & Perl',yr:'2020',steps:[
-    {label:'Agenda setting',cls:'c-prob'},{label:'Policy formulation',cls:'c-gen-thin'},
-    {label:'Decision-making',cls:'c-dec'},{label:'Implementation',cls:'c-impl'},
-    {label:'Evaluation (ex-post)',cls:'c-expost'}]},
-  {name:'Kraft & Furlong',yr:'2021',steps:[
-    {label:'Problem definition',cls:'c-prob'},{label:'Agenda setting',cls:'c-prob'},
-    {label:'Policy formulation',cls:'c-gen-thin'},{label:'Legitimation',cls:'c-dec'},
-    {label:'Implementation',cls:'c-impl'},{label:'Evaluation (ex-post)',cls:'c-expost'}]},
-  {name:'Anderson',yr:'2015',steps:[
-    {label:'Problem ID & agenda',cls:'c-prob'},{label:'Policy formulation',cls:'c-gen-thin'},
-    {label:'Policy adoption',cls:'c-dec'},{label:'Implementation',cls:'c-impl'},
-    {label:'Evaluation (ex-post)',cls:'c-expost'}]},
-  {name:'Mintrom',yr:'2012',steps:[
-    {label:'Define problem',cls:'c-prob'},{label:'Set objectives',cls:'c-evid'},
-    {label:'Identify alternatives',cls:'c-gen'},{label:'Analyze alternatives',cls:'c-eval'},
-    {label:'Compare alternatives',cls:'c-comp'},{label:'Decision',cls:'c-dec'},
-    {label:'Communicate',cls:'c-comm'}]},
-  {name:'Pal',yr:'2014',steps:[
-    {label:'Problem recognition',cls:'c-prob'},{label:'Agenda setting',cls:'c-prob'},
-    {label:'Policy formulation',cls:'c-gen-thin'},{label:'Decision-making',cls:'c-dec'},
-    {label:'Implementation',cls:'c-impl'},{label:'Evaluation (ex-post)',cls:'c-expost'}]},
-  {name:'Birkland',yr:'2020',steps:[
-    {label:'Issue emergence',cls:'c-prob'},{label:'Agenda setting',cls:'c-prob'},
-    {label:'Alternative selection',cls:'c-gen-thin'},{label:'Enactment',cls:'c-dec'},
-    {label:'Implementation',cls:'c-impl'},{label:'Evaluation (ex-post)',cls:'c-expost'}]},
-  {name:'Mead',yr:'2019',steps:[
-    {label:'Define problem',cls:'c-prob'},{label:'Assemble evidence',cls:'c-evid'},
-    {label:'Propose alternatives',cls:'c-gen-thin'},{label:'Set criteria',cls:'c-crit'},
-    {label:'Evaluate options',cls:'c-eval'},{label:'Compare & trade-offs',cls:'c-comp'},
-    {label:'Recommend',cls:'c-dec'},{label:'Communicate',cls:'c-comm'}]},
-  {name:'Bobrow & Dryzek',yr:'1987',steps:[
-    {label:'Problem framing',cls:'c-prob'},{label:'Multiple frames',cls:'c-evid'},
-    {label:'Design options ✦✦',cls:'c-gen'},{label:'Frame-relative evaluation',cls:'c-eval'},
-    {label:'Contextual choice',cls:'c-dec'}]},
-  {name:'Nagel',yr:'1988',steps:[
-    {label:'Problem formulation',cls:'c-prob'},{label:'Generate alternatives ✦',cls:'c-gen'},
-    {label:'Criteria ID',cls:'c-crit'},{label:'Evaluate',cls:'c-eval'},
-    {label:'Integration & synthesis',cls:'c-comp'},{label:'Recommend',cls:'c-dec'}]},
-  {name:'Stone',yr:'2012',steps:[
-    {label:'Goals',cls:'c-prob'},{label:'Problems',cls:'c-prob'},
-    {label:'Solutions',cls:'c-gen-thin'},{label:'(framework, not steps)',cls:'c-na'}]},
+// DATA — each book with grid cells + swim steps + tooltips
+const D=[
+{n:'Bardach & Patashnik',y:'2019',grid:[
+{s:1,l:'Define the problem',c:'c-prob',t:'~10pp. Keep it small, actionable, client-oriented.'},
+{s:2,l:'Assemble evidence',c:'c-evid',t:'~20pp. Data, interviews, literature. "Think before you collect."'},
+{s:3,l:'Construct alternatives',c:'c-gen',t:'~15pp. Start with the obvious. Ask practitioners. 3-4 max. No named method.'},
+{s:4,l:'Select criteria',c:'c-crit',t:'~10pp. Efficiency, equity, liberty, feasibility.'},
+{s:5,l:'Project outcomes',c:'c-eval',t:'~15pp. For each alternative, predict what happens.'},
+{s:6,l:'Confront trade-offs',c:'c-comp',t:'~10pp. Lay alternatives side by side.'},
+{s:7,l:'Decide!',c:'c-dec',t:'~5pp. Once trade-offs are clear, decide.'},
+{s:8,l:'Tell your story',c:'c-comm',t:'~15pp. Write the policy memo.'}],
+swim:[{l:'Define problem',c:'c-prob',t:'~10pp'},{l:'Assemble evidence',c:'c-evid',t:'~20pp'},{l:'Construct alternatives',c:'c-gen',t:'~15pp. No method.'},{l:'Select criteria',c:'c-crit',t:'~10pp'},{l:'Project outcomes',c:'c-eval',t:'~15pp'},{l:'Confront trade-offs',c:'c-comp',t:'~10pp'},{l:'Decide!',c:'c-dec',t:'~5pp'},{l:'Tell your story',c:'c-comm',t:'~15pp'}]},
+{n:'Weimer & Vining',y:'2017',grid:[
+{s:1,l:'Understand & model problem',c:'c-prob',t:'3 sub-steps with market/government failure frameworks.'},
+{s:0,l:'—',c:'c-na',t:''},
+{s:3,l:'Identify alternatives (sub§)',c:'c-gen-thin',r:1,t:'A subsection, not a chapter. Lists sources, no protocol.'},
+{s:2,l:'Goals & constraints',c:'c-crit',r:1,t:'Step 2 — BEFORE alternatives. Client objectives + constraints.'},
+{s:4,l:'Predict impacts',c:'c-eval',t:'CBA, CEA. Multiple chapters, ~60pp.'},
+{s:5,l:'Value & trade-offs',c:'c-comp',t:'Multi-goal analysis. ~40pp.'},
+{s:6,l:'Recommend',c:'c-dec',t:''},
+{s:7,l:'Communicate',c:'c-comm',t:''}],
+swim:[{l:'Understand problem',c:'c-prob'},{l:'Goals & constraints',c:'c-crit',t:'Step 2 — before alternatives'},{l:'Identify alternatives',c:'c-gen-thin',t:'Subsection only'},{l:'Predict impacts',c:'c-eval',t:'~60pp'},{l:'Value & trade-offs',c:'c-comp',t:'~40pp'},{l:'Recommend',c:'c-dec'},{l:'Communicate',c:'c-comm'}]},
+{n:'Patton, Sawicki & Clark',y:'2013',grid:[
+{s:1,l:'Define problem',c:'c-prob',t:'Verify, define, detail.'},
+{s:0,l:'—',c:'c-na',t:''},
+{s:3,l:'Identify alternatives ✦',c:'c-gen',r:1,t:'Full chapter. No-action baseline, surveys, lit review, cross-jurisdictional comparison, typologies.'},
+{s:2,l:'Evaluation criteria',c:'c-crit',r:1,t:'Step 2 — BEFORE alternatives.'},
+{s:4,l:'Evaluate alternatives',c:'c-eval',t:'Apply criteria. Quantitative + qualitative.'},
+{s:5,l:'Display & distinguish',c:'c-comp',t:'Decision matrices, scorecard tables.'},
+{s:0,l:'—',c:'c-na',t:''},
+{s:6,l:'Implement & monitor',c:'c-impl',t:''}],
+swim:[{l:'Define problem',c:'c-prob'},{l:'Evaluation criteria',c:'c-crit',t:'Before alternatives'},{l:'Identify alternatives ✦',c:'c-gen',t:'Full chapter with named techniques'},{l:'Evaluate',c:'c-eval'},{l:'Display & distinguish',c:'c-comp'},{l:'Implement & monitor',c:'c-impl'}]},
+{n:'Dunn',y:'2018',grid:[
+{s:1,l:'Problem structuring',c:'c-prob',t:'Boundary, classificational, hierarchy analysis. Most rigorous.'},
+{s:2,l:'Forecasting',c:'c-eval',t:'Outcome projection — NOT evidence-gathering.'},
+{s:3,l:'Recommendation (options)',c:'c-gen-thin',t:'Prescribing action. Contains option ID but purpose is advocacy.'},
+{s:0,l:'—',c:'c-na',t:''},
+{s:4,l:'Monitoring ᵖ',c:'c-expost',t:'EX-POST: observing actual outcomes after implementation.'},
+{s:5,l:'Evaluation ᵖ',c:'c-expost',t:'EX-POST: appraising performance after the fact.'},
+{s:0,l:'—',c:'c-na',t:''},
+{s:0,l:'Cycle; ᵖ=ex-post',c:'c-na',t:''}],
+swim:[{l:'Problem structuring',c:'c-prob'},{l:'Forecasting',c:'c-eval',t:'Outcome projection'},{l:'Recommendation',c:'c-gen-thin'},{l:'Monitoring (ex-post)',c:'c-expost'},{l:'Evaluation (ex-post)',c:'c-expost'}]},
+{n:'Thissen & Walker',y:'2013',grid:[
+{s:1,l:'Problem articulation',c:'c-prob',t:'Multiple stakeholder perspectives.'},
+{s:2,l:'Problem assessment',c:'c-evid',t:'Structure, causes, dynamics.'},
+{s:3,l:'Generate alternatives ✦',c:'c-gen',t:'~1.5ch. Separates generation from assessment. Scenario-based, design-oriented.'},
+{s:0,l:'—',c:'c-na',t:''},
+{s:4,l:'Assess alternatives',c:'c-eval',t:'Per-option: impacts, costs, feasibility.'},
+{s:5,l:'Compare alternatives',c:'c-comp',t:'Cross-option ranking. Unique formal distinction.'},
+{s:0,l:'—',c:'c-na',t:''},
+{s:6,l:'Communication',c:'c-comm',t:''}],
+swim:[{l:'Problem articulation',c:'c-prob'},{l:'Problem assessment',c:'c-evid'},{l:'Generate alternatives ✦',c:'c-gen',t:'Scenario-based, design-oriented'},{l:'Assess alternatives',c:'c-eval'},{l:'Compare alternatives',c:'c-comp'},{l:'Communication',c:'c-comm'}]},
+{n:'Enserink et al. (Delft)',y:'2010',grid:[
+{s:1,l:'Problem formulation',c:'c-prob',t:'Multi-actor context.'},
+{s:2,l:'System & actor analysis',c:'c-evid',t:'Causal mapping + stakeholder mapping.'},
+{s:3,l:'Develop alternatives ✦',c:'c-gen',t:'~1.5ch. Scenarios + structured option development.'},
+{s:0,l:'—',c:'c-na',t:''},
+{s:4,l:'Ex-ante evaluation',c:'c-eval',t:'MCA, CBA.'},
+{s:5,l:'Robustness analysis',c:'c-comp',t:'Sensitivity under uncertainty.'},
+{s:0,l:'—',c:'c-na',t:''},
+{s:6,l:'Implementation strategy',c:'c-impl',t:''}],
+swim:[{l:'Problem formulation',c:'c-prob'},{l:'System & actor analysis',c:'c-evid'},{l:'Develop alternatives ✦',c:'c-gen',t:'Scenarios + structured development'},{l:'Ex-ante evaluation',c:'c-eval'},{l:'Robustness analysis',c:'c-comp'},{l:'Implementation strategy',c:'c-impl'}]},
+{n:'Shalita & Schwartz',y:'2019',grid:[
+{s:1,l:'Define problem',c:'c-prob',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:3,l:'Generate alternatives',c:'c-gen-thin',r:1,t:'Brainstorming, analogies, best-practices scan.'},
+{s:2,l:'Set goals',c:'c-crit',r:1,t:'Step 2 — BEFORE alternatives.'},
+{s:4,l:'Analyze (impacts)',c:'c-eval',t:''},{s:5,l:'Compare (matrix)',c:'c-comp',t:''},
+{s:6,l:'Recommend',c:'c-dec',t:''},{s:7,l:'Communicate',c:'c-comm',t:''}],
+swim:[{l:'Define problem',c:'c-prob'},{l:'Set goals',c:'c-crit',t:'Before alternatives'},{l:'Generate alternatives',c:'c-gen-thin'},{l:'Analyze (impacts)',c:'c-eval'},{l:'Compare (matrix)',c:'c-comp'},{l:'Recommend',c:'c-dec'},{l:'Communicate',c:'c-comm'}]},
+{n:'Bromell',y:'2024',grid:[
+{s:1,l:'Define issue',c:'c-prob',t:''},{s:2,l:'Evidence base',c:'c-evid',t:''},
+{s:3,l:'Identify options',c:'c-gen-thin',t:'Bardach template. Thin.'},
+{s:4,l:'Criteria',c:'c-crit',t:''},{s:5,l:'Assess options',c:'c-eval',t:''},
+{s:6,l:'Compare options',c:'c-comp',t:''},{s:7,l:'Recommend',c:'c-dec',t:''},{s:8,l:'Communicate',c:'c-comm',t:''}],
+swim:[{l:'Define issue',c:'c-prob'},{l:'Evidence base',c:'c-evid'},{l:'Identify options',c:'c-gen-thin'},{l:'Criteria',c:'c-crit'},{l:'Assess options',c:'c-eval'},{l:'Compare options',c:'c-comp'},{l:'Recommend',c:'c-dec'},{l:'Communicate',c:'c-comm'}]},
+{n:'McLaughlin²',y:'2019',grid:[
+{s:1,l:'Identify problem',c:'c-prob',t:''},{s:2,l:'Assemble evidence',c:'c-evid',t:''},
+{s:4,l:'Identify alternatives',c:'c-gen-thin',r:1,t:'Step 4 — after criteria. Health-sector Bardach.'},
+{s:3,l:'Establish criteria',c:'c-crit',r:1,t:'Step 3 — BEFORE alternatives.'},
+{s:5,l:'Evaluate alternatives',c:'c-eval',t:''},{s:6,l:'Weigh criteria',c:'c-comp',t:''},
+{s:7,l:'Decide',c:'c-dec',t:''},{s:0,l:'—',c:'c-na',t:''}],
+swim:[{l:'Identify problem',c:'c-prob'},{l:'Assemble evidence',c:'c-evid'},{l:'Establish criteria',c:'c-crit',t:'Before alternatives'},{l:'Identify alternatives',c:'c-gen-thin'},{l:'Evaluate',c:'c-eval'},{l:'Weigh criteria',c:'c-comp'},{l:'Decide',c:'c-dec'}]},
+{n:'Knoepfel et al.',y:'2007',grid:[
+{s:1,l:'Agenda setting',c:'c-prob',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:2,l:'Policy formulation',c:'c-gen-thin',t:'Political negotiation, not analytical search.'},
+{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:3,l:'Decision / adoption',c:'c-dec',t:''},{s:0,l:'4→Impl 5→Eval',c:'c-na',t:'Cycle model, ex-post.'}],
+swim:[{l:'Agenda setting',c:'c-prob'},{l:'Policy formulation',c:'c-gen-thin'},{l:'Decision/adoption',c:'c-dec'},{l:'Implementation',c:'c-impl'},{l:'Evaluation (ex-post)',c:'c-expost'}]},
+{n:'Kingdon',y:'1984',dim:1,grid:[
+{s:0,l:'Problem stream',c:'c-prob',t:'How problems get attention.'},{s:0,l:'—',c:'c-na',t:''},
+{s:0,l:'Policy stream',c:'c-gen-thin',t:'WHERE ideas percolate. Descriptive.'},
+{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:0,l:'Policy window',c:'c-dec',t:'Streams couple, often by chance.'},
+{s:0,l:'Descriptive',c:'c-na',t:''}],
+swim:[{l:'Problem stream',c:'c-prob'},{l:'Policy stream',c:'c-gen-thin'},{l:'Political stream',c:'c-na'},{l:'Policy window',c:'c-dec'}]},
+// NEW TEXTBOOKS
+{n:'Howlett, Ramesh & Perl',y:'2020',grid:[
+{s:1,l:'Agenda setting',c:'c-prob',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:2,l:'Policy formulation',c:'c-gen-thin',t:'Political-institutional process. Describes how alternatives emerge from policy communities.'},
+{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:3,l:'Decision-making',c:'c-dec',t:''},{s:0,l:'4→Impl 5→Eval',c:'c-na',t:'Cycle.'}],
+swim:[{l:'Agenda setting',c:'c-prob'},{l:'Policy formulation',c:'c-gen-thin',t:'Political process, not method'},{l:'Decision-making',c:'c-dec'},{l:'Implementation',c:'c-impl'},{l:'Evaluation (ex-post)',c:'c-expost'}]},
+{n:'Kraft & Furlong',y:'2021',grid:[
+{s:1,l:'Problem def. & agenda',c:'c-prob',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:2,l:'Policy formulation',c:'c-gen-thin',t:'Includes generating alternatives. Thin guidance.'},
+{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:3,l:'Policy legitimation',c:'c-dec',t:''},{s:0,l:'4→Impl 5→Eval',c:'c-na',t:'Cycle.'}],
+swim:[{l:'Problem def. & agenda',c:'c-prob'},{l:'Policy formulation',c:'c-gen-thin'},{l:'Legitimation',c:'c-dec'},{l:'Implementation',c:'c-impl'},{l:'Evaluation (ex-post)',c:'c-expost'}]},
+{n:'Anderson',y:'2015',grid:[
+{s:1,l:'Problem ID & agenda',c:'c-prob',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:2,l:'Policy formulation',c:'c-gen-thin',t:'Explicitly includes generating alternatives. Political framing.'},
+{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:3,l:'Policy adoption',c:'c-dec',t:''},{s:0,l:'4→Impl 5→Eval',c:'c-na',t:'Cycle.'}],
+swim:[{l:'Problem ID & agenda',c:'c-prob'},{l:'Policy formulation',c:'c-gen-thin'},{l:'Policy adoption',c:'c-dec'},{l:'Implementation',c:'c-impl'},{l:'Evaluation (ex-post)',c:'c-expost'}]},
+{n:'Mintrom',y:'2012',grid:[
+{s:1,l:'Define problem',c:'c-prob',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:3,l:'Identify alternatives',c:'c-gen-thin',r:1,t:'Standard guidance. No named method.'},
+{s:2,l:'Set objectives',c:'c-crit',r:1,t:'Step 2 — BEFORE alternatives. = criteria.'},
+{s:4,l:'Analyze alternatives',c:'c-eval',t:''},{s:5,l:'Compare alternatives',c:'c-comp',t:''},
+{s:6,l:'Decision',c:'c-dec',t:''},{s:7,l:'Communicate',c:'c-comm',t:''}],
+swim:[{l:'Define problem',c:'c-prob'},{l:'Set objectives',c:'c-crit',t:'Before alternatives'},{l:'Identify alternatives',c:'c-gen-thin'},{l:'Analyze alternatives',c:'c-eval'},{l:'Compare alternatives',c:'c-comp'},{l:'Decision',c:'c-dec'},{l:'Communicate',c:'c-comm'}]},
+{n:'Pal',y:'2014',grid:[
+{s:1,l:'Problem recognition',c:'c-prob',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:2,l:'Policy formulation',c:'c-gen-thin',t:'Cycle + design-oriented chapter on instruments.'},
+{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:3,l:'Decision-making',c:'c-dec',t:''},{s:0,l:'4→Impl 5→Eval',c:'c-na',t:'Cycle.'}],
+swim:[{l:'Problem recognition',c:'c-prob'},{l:'Policy formulation',c:'c-gen-thin'},{l:'Decision-making',c:'c-dec'},{l:'Implementation',c:'c-impl'},{l:'Evaluation (ex-post)',c:'c-expost'}]},
+{n:'Birkland',y:'2020',grid:[
+{s:1,l:'Issue emergence & agenda',c:'c-prob',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:2,l:'Alternative selection',c:'c-gen-thin',t:'Political-descriptive stage.'},
+{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:3,l:'Enactment',c:'c-dec',t:''},{s:0,l:'4→Impl 5→Eval',c:'c-na',t:'Cycle.'}],
+swim:[{l:'Issue emergence & agenda',c:'c-prob'},{l:'Alternative selection',c:'c-gen-thin'},{l:'Enactment',c:'c-dec'},{l:'Implementation',c:'c-impl'},{l:'Evaluation (ex-post)',c:'c-expost'}]},
+{n:'Mead',y:'2019',grid:[
+{s:1,l:'Define problem',c:'c-prob',t:''},{s:2,l:'Assemble evidence',c:'c-evid',t:''},
+{s:3,l:'Propose alternatives',c:'c-gen-thin',t:'Bardach-style. Thin treatment.'},
+{s:4,l:'Set criteria',c:'c-crit',t:''},{s:5,l:'Evaluate options',c:'c-eval',t:''},
+{s:6,l:'Compare & trade-offs',c:'c-comp',t:''},{s:7,l:'Recommend',c:'c-dec',t:''},
+{s:8,l:'Communicate',c:'c-comm',t:''}],
+swim:[{l:'Define problem',c:'c-prob'},{l:'Assemble evidence',c:'c-evid'},{l:'Propose alternatives',c:'c-gen-thin'},{l:'Set criteria',c:'c-crit'},{l:'Evaluate options',c:'c-eval'},{l:'Compare & trade-offs',c:'c-comp'},{l:'Recommend',c:'c-dec'},{l:'Communicate',c:'c-comm'}]},
+{n:'Bobrow & Dryzek',y:'1987',gold:1,grid:[
+{s:1,l:'Problem framing',c:'c-prob',t:'Frame through multiple analytical lenses.'},
+{s:2,l:'Multiple frames',c:'c-evid',t:'Welfare economics, public choice, social structure, info processing, political philosophy.'},
+{s:3,l:'Design options ✦✦',c:'c-gen',t:'~3ch. Draw on all 5 traditions. Multi-perspectival design. Closest to cross-domain.'},
+{s:0,l:'—',c:'c-na',t:''},{s:4,l:'Frame-relative eval',c:'c-eval',t:'Each frame evaluates differently.'},
+{s:0,l:'—',c:'c-na',t:''},{s:5,l:'Contextual choice',c:'c-dec',t:''},
+{s:0,l:'Design model',c:'c-na',t:''}],
+swim:[{l:'Problem framing',c:'c-prob'},{l:'Multiple frames',c:'c-evid',t:'5 intellectual traditions'},{l:'Design options ✦✦',c:'c-gen',t:'~3ch. Cross-tradition design'},{l:'Frame-relative eval',c:'c-eval'},{l:'Contextual choice',c:'c-dec'}]},
+{n:'Nagel',y:'1988',grid:[
+{s:1,l:'Problem formulation',c:'c-prob',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:2,l:'Generate alternatives ✦',c:'c-gen',t:'~1.5ch. Analogy, decomposition, optimization. Pre-2000, largely forgotten.'},
+{s:3,l:'Criteria ID',c:'c-crit',t:''},{s:4,l:'Evaluate',c:'c-eval',t:''},
+{s:5,l:'Integration & synthesis',c:'c-comp',t:''},{s:6,l:'Recommend',c:'c-dec',t:''},
+{s:0,l:'—',c:'c-na',t:''}],
+swim:[{l:'Problem formulation',c:'c-prob'},{l:'Generate alternatives ✦',c:'c-gen',t:'Analogy, decomposition, optimization'},{l:'Criteria ID',c:'c-crit'},{l:'Evaluate',c:'c-eval'},{l:'Integration & synthesis',c:'c-comp'},{l:'Recommend',c:'c-dec'}]},
+{n:'Stone',y:'2012',dim:1,grid:[
+{s:0,l:'Goals',c:'c-prob',t:'Equity, efficiency, liberty, security.'},
+{s:0,l:'Problems',c:'c-prob',t:'Symbols, numbers, causes, interests.'},
+{s:0,l:'Solutions',c:'c-gen-thin',t:'Inducements, rules, facts, rights, powers. Typology, not method.'},
+{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},{s:0,l:'—',c:'c-na',t:''},
+{s:0,l:'—',c:'c-na',t:''},{s:0,l:'Framework',c:'c-na',t:'Not a step sequence.'}],
+swim:[{l:'Goals',c:'c-prob'},{l:'Problems',c:'c-prob'},{l:'Solutions',c:'c-gen-thin',t:'Typology, not method'},{l:'(framework)',c:'c-na'}]},
 ];
-const container=document.getElementById('swim-container');
-books.forEach(b=>{
-  const row=document.createElement('div');row.className='swim-row';
-  const lbl=document.createElement('div');lbl.className='swim-label';
-  lbl.innerHTML=b.name+'<span class="yr">'+b.yr+'</span>';
-  row.appendChild(lbl);
-  const track=document.createElement('div');track.className='swim-track';
-  b.steps.forEach((s,i)=>{
-    if(i>0){const ar=document.createElement('span');ar.className='swim-arrow';ar.textContent='→';track.appendChild(ar)}
-    const step=document.createElement('div');
-    step.className='swim-step '+s.cls;
-    step.textContent=s.label;
-    step.style.flex=s.label.length>20?'2':'1';
-    step.title=s.label;
-    track.appendChild(step);
+
+// NON-STEP books
+const NS=[
+{n:'Wildavsky & Peters',y:'2018',note:'No step sequence — essay-based "art and craft."'},
+{n:'Fischer, Miller & Sidney',y:'2007',note:'Handbook. Methods: CBA, risk, evaluation — no generation chapter.'},
+{n:'Morgan, Henrion & Small',y:'1990',note:'Uncertainty methods only.'},
+];
+
+// BUILD COVERAGE GRID
+const G=document.getElementById('coverage-grid');
+const hdr=['Textbook','Problem','Evidence','Generate Options','Criteria','Evaluate','Compare','Decide','Comm / Impl'];
+hdr.forEach((h,i)=>{const d=document.createElement('div');d.className='gh'+(i===3?' col-gen':'');d.textContent=h;G.appendChild(d)});
+D.forEach(b=>{
+  const lb=document.createElement('div');lb.className='gl';lb.style.color=b.gold?'var(--gold)':b.dim?'var(--text-dim)':'';
+  lb.innerHTML=b.n+'<span class="yr">'+b.y+'</span>';G.appendChild(lb);
+  b.grid.forEach(cell=>{
+    const d=document.createElement('div');
+    d.className='gc '+cell.c+(cell.r?' reordered':'')+(cell.c==='c-na'&&!cell.l.match(/[A-Z]/)?' ':' tt');
+    let inner=cell.l;
+    if(cell.s>0)inner='<span class="sn">'+cell.s+'</span>'+inner;
+    if(cell.t)inner+='<span class="ttx">'+cell.t+'</span>';
+    d.innerHTML=inner;
+    if(cell.c==='c-na'&&cell.l.includes('→'))d.style.fontSize='.55rem';
+    if(cell.c==='c-na'&&(cell.l==='Cycle'||cell.l.includes('Descriptive')||cell.l.includes('Framework')||cell.l.includes('Design')||cell.l.includes('ex-post')))d.style.fontSize='.55rem';
+    G.appendChild(d);
   });
-  row.appendChild(track);
-  container.appendChild(row);
+});
+NS.forEach(b=>{
+  const lb=document.createElement('div');lb.className='gl';lb.style.color='var(--gray)';
+  lb.innerHTML=b.n+'<span class="yr">'+b.y+'</span>';G.appendChild(lb);
+  const d=document.createElement('div');d.className='gc c-na';d.style.gridColumn='span 8';
+  d.style.textAlign='left';d.style.paddingLeft='.7rem';d.style.fontSize='.62rem';
+  d.textContent=b.note;G.appendChild(d);
+});
+
+// BUILD SWIM LANES
+const SC=document.getElementById('swim-container');
+D.forEach(b=>{
+  const r=document.createElement('div');r.className='swim-row';
+  const lb=document.createElement('div');lb.className='swim-label';
+  lb.innerHTML=b.n+'<span class="yr">'+b.y+'</span>';r.appendChild(lb);
+  const t=document.createElement('div');t.className='swim-track';
+  b.swim.forEach((s,i)=>{
+    if(i>0){const a=document.createElement('span');a.className='swim-arrow';a.textContent='→';t.appendChild(a)}
+    const d=document.createElement('div');d.className='swim-step '+s.c;
+    let inner=s.l;
+    if(s.t)inner+='<span class="ttx">'+s.t+'</span>';
+    d.innerHTML=inner;d.style.flex=s.l.length>18?'2':'1';
+    t.appendChild(d);
+  });
+  r.appendChild(t);SC.appendChild(r);
 });
 </script>
-
 </body>
 </html>
