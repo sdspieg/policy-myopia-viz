@@ -549,12 +549,15 @@ GM.forEach(function(r){
   // Component cells (indices 4-11)
   for(var i=4;i<12;i++){
     var td=document.createElement('td');
-    td.style.cssText='border:1px solid var(--border);padding:.3rem;text-align:center';
+    td.className='tt';
+    td.style.cssText='border:1px solid var(--border);padding:.3rem;text-align:center;cursor:pointer';
     var v=r[i];
-    if(v===1){td.style.background='rgba(46,204,113,.15)';td.style.color='#2ecc71';td.textContent='●';}
-    else if(v===.5){td.style.background='rgba(219,173,80,.08)';td.style.color='var(--gold)';td.textContent='◐';}
-    else{td.style.color='var(--border)';td.textContent='·';}
-    td.title=compCols[i-4]+': '+(v===1?'Yes':v===.5?'Partial':'No')+' — '+r[12];
+    if(v===1){td.style.background='rgba(46,204,113,.15)';td.style.color='#2ecc71';}
+    else if(v===.5){td.style.background='rgba(219,173,80,.08)';td.style.color='var(--gold)';}
+    else{td.style.color='var(--border)';}
+    var symbol=v===1?'●':v===.5?'◐':'·';
+    var verdict=v===1?'<strong style="color:#2ecc71">Yes</strong>':v===.5?'<strong style="color:var(--gold)">Partial</strong>':'<strong style="color:var(--gray)">No</strong>';
+    td.innerHTML=symbol+'<span class="ttx"><strong style="color:var(--gold)">'+compCols[i-4]+'</strong>: '+verdict+'<br><strong>'+r[0]+'</strong> ('+r[1]+'): '+r[12]+'</span>';
     tr.appendChild(td);
   }
   // Pages cell
