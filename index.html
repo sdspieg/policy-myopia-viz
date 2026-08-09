@@ -69,27 +69,23 @@ a{color:var(--gold)}
 </div>
 <div id="tip-box"></div>
 
-<!-- ═══ TAB 0: INSIGHTS ═══ -->
+<!-- ═══ TAB 0: INSIGHTS (data-driven from GM array) ═══ -->
 <div class="tab-body active" id="tab-insights">
 <h2>The headline</h2>
-<p style="font-size:1rem;color:var(--wh);margin-bottom:1rem"><strong>Policy analysis textbooks have a developed methodology for choosing between options and an undeveloped one for generating them.</strong> The asymmetry is not that textbooks forget to mention alternatives — all 21 have a slot for it. It is that they treat generation as a checkbox while evaluation gets CBA, MCA, sensitivity testing, and entire graduate courses.</p>
-<div class="stats-bar">
-<div class="stat"><div class="stat-num" style="color:var(--wh)">21</div><div class="stat-label">textbooks with process models</div></div>
-<div class="stat"><div class="stat-num" style="color:var(--gold)">21</div><div class="stat-label">have a generation slot</div></div>
-<div class="stat"><div class="stat-num" style="color:var(--red)">4</div><div class="stat-label">give a generation METHOD</div></div>
-<div class="stat"><div class="stat-num" style="color:var(--red)">1?</div><div class="stat-label">cross-domain design</div></div>
-</div>
-<h2>Five findings</h2>
-<div class="finding"><div class="finding-num">1</div><div class="finding-body"><h4>The step exists; the method does not</h4><p>All 21 textbooks include a generation slot. But only <strong>4</strong> provide named methods (Thissen & Walker ✦, Enserink/Delft ✦, Patton/Sawicki/Clark ✦, Nagel ✦). The other 17 say "brainstorm" or "consult practitioners." The evaluation side has CBA, MCA, sensitivity analysis, robustness testing — each with its own chapter.</p></div></div>
-<div class="finding"><div class="finding-num">2</div><div class="finding-body"><h4>The evaluation tail</h4><p>Every analytical textbook follows generation with <strong>2–4 evaluation steps</strong>. The median page ratio is roughly <strong>4:1</strong>. Bardach: ~15pp generation vs ~50pp evaluation. Weimer & Vining: a subsection vs ~120pp. Only Bobrow & Dryzek invert this.</p></div></div>
-<div class="finding"><div class="finding-num">3</div><div class="finding-body"><h4>The criteria-first split</h4><p><strong>5 textbooks</strong> put criteria <em>before</em> generation. The rest follow Bardach's order. <strong>Neither camp discusses the other's ordering.</strong> If you set criteria first, you constrain what options you can see.</p></div></div>
-<div class="finding"><div class="finding-num">4</div><div class="finding-body"><h4>Formulation ≠ method</h4><p><strong>6 cycle-model textbooks</strong> have a "policy formulation" stage — but describe it as a <em>political process</em>, not an <em>analytical method</em>. Having a generation slot in a descriptive cycle is not having a generation method in a prescriptive toolkit.</p></div></div>
-<div class="finding"><div class="finding-num">5</div><div class="finding-body"><h4>One partial exception</h4><p><strong>Bobrow & Dryzek (1987) ✦✦</strong> draw on 5 intellectual traditions for policy <em>design</em>. But their framework is multi-perspectival (different lenses on one problem), not cross-domain search (finding what another field did about a similar problem). The gap the policy myopia paper identifies goes further.</p></div></div>
+<p style="font-size:1rem;color:var(--wh);margin-bottom:1rem"><strong>Policy analysis has methods for generating options. The mainstream doesn't teach them.</strong> Five textbooks — out of twenty-one — provide named methods for option generation: scenario-based design, morphological analysis, analogy, decomposition, cross-disciplinary framing. One (Bobrow & Dryzek 1987) organised an entire book around it. The methods exist. They have existed since the 1980s. The other sixteen textbooks — including Bardach, the most widely taught — say "brainstorm" and move on. The field's problem is not that nobody built a generation methodology. It is that the methodology keeps not being adopted.</p>
+<div class="stats-bar" id="stats-bar-computed"></div>
+<h2>Six findings</h2>
+<div class="finding"><div class="finding-num">1</div><div class="finding-body"><h4>The methods exist — in 5 books out of 21</h4><p id="f1-text"></p></div></div>
+<div class="finding"><div class="finding-num">2</div><div class="finding-body"><h4>The component gradient</h4><p>Option generation decomposes into 8 components (see the <span style="cursor:pointer;color:var(--gold);text-decoration:underline" onclick="switchTab('generation')">Option Generation tab</span>). The left end — "survey existing policies," "include the status quo" — is commodity guidance present in 12+ textbooks. The right end — scenario-based generation, cross-disciplinary design, generation as its own analytical phase — is present in 2-3. The field invested in the easy end and left the hard end empty.</p></div></div>
+<div class="finding"><div class="finding-num">3</div><div class="finding-body"><h4>The evaluation tail</h4><p>Every analytical textbook follows generation with <strong>2–4 evaluation steps</strong>. The typical page ratio is roughly <strong>3:1</strong>. Bardach: ~15pp generation vs ~50pp evaluation. Weimer & Vining: a subsection vs ~120pp. Only Bobrow & Dryzek invert this — because their entire book IS about generation.</p></div></div>
+<div class="finding"><div class="finding-num">4</div><div class="finding-body"><h4>The criteria-first split</h4><p><strong>5 textbooks</strong> put criteria <em>before</em> generation — the analyst is told to know what they're looking for before they search. The rest follow Bardach's order. <strong>Neither camp discusses the other's ordering as a design choice</strong>, and neither observes what the ordering implies for the scope of search.</p></div></div>
+<div class="finding"><div class="finding-num">5</div><div class="finding-body"><h4>Formulation ≠ method</h4><p><strong>6 cycle-model textbooks</strong> have a "policy formulation" stage — but describe it as a <em>political process</em> (what happens in government), not an <em>analytical method</em> (what an analyst should do). Having a generation slot in a descriptive cycle is not having a generation method in a prescriptive toolkit.</p></div></div>
+<div class="finding"><div class="finding-num">6</div><div class="finding-body"><h4>Cross-domain search: still missing</h4><p>Even the strongest generation book — Bobrow & Dryzek — is <strong>multi-perspectival within the social sciences</strong> (welfare economics, public choice, sociology, information theory, political philosophy). It does not extend to ecology, engineering, or medicine, and it does not search for structural analogues across domains. The protocol the policy myopia paper proposes — "where has a structurally similar problem already been solved, in <em>any</em> field?" — goes further than any textbook in the corpus.</p></div></div>
 <h2>What you can explore</h2>
 <div class="guide-grid">
-<div class="guide-card" onclick="switchTab('coverage')"><h4>📊 Coverage Matrix</h4><p>Which phases does each textbook cover? Step-order numbers show where sequences differ. Hover cells for what each book recommends.</p></div>
-<div class="guide-card" onclick="switchTab('sequence')"><h4>🔀 Step Sequences</h4><p>Each book's steps in its own order. The criteria-first split and the evaluation tail jump out visually. Hover for details.</p></div>
-<div class="guide-card" onclick="showModal('m-generate')"><h4>🔍 Generation Deep-Dive</h4><p>What exactly does each textbook say about generating options? From Bardach's "start with the obvious" to Bobrow & Dryzek's five-frame design.</p></div>
+<div class="guide-card" onclick="switchTab('generation')"><h4>🔍 Option Generation</h4><p>The 8-component matrix: which textbooks cover which generation components? The gradient from commodity (survey existing) to method (scenario/cross-domain) IS the finding.</p></div>
+<div class="guide-card" onclick="switchTab('coverage')"><h4>📊 Coverage Matrix</h4><p>Which analytical phases does each textbook cover? Step-order numbers show where sequences differ. Hover for guidance details.</p></div>
+<div class="guide-card" onclick="switchTab('sequence')"><h4>🔀 Step Sequences</h4><p>Each book's steps in its own order. The criteria-first split and the evaluation tail jump out visually.</p></div>
 </div>
 <div class="bar-section">
 <h2>Generation vs evaluation: page share
@@ -583,6 +579,28 @@ for(var ci=4;ci<12;ci++){
 var tdpT=document.createElement('td');tdpT.style.cssText='border:1px solid var(--border)';
 totR.appendChild(tdpT);
 gtb.appendChild(totR);
+
+// COMPUTE STATS FROM GM ARRAY — single source of truth for Main Insights tab
+(function(){
+  var nTotal=GM.length;
+  var methodBooks=GM.filter(function(r){return r[2].indexOf('✦')>=0});
+  var nMethod=methodBooks.length;
+  var methodNames=methodBooks.map(function(r){return '<strong>'+r[0]+'</strong> '+r[2]+' ('+r[1]+')'}).join(', ');
+  var nCrossDisc=GM.filter(function(r){return r[10]>=0.5}).length;
+  var nOwnPhase=GM.filter(function(r){return r[11]>=1}).length;
+  var nScenario=GM.filter(function(r){return r[9]>=0.5}).length;
+  var nCheckbox=GM.filter(function(r){return r[2]===''}).length;
+  var sb=document.getElementById('stats-bar-computed');
+  if(sb)sb.innerHTML=
+    '<div class="stat"><div class="stat-num" style="color:var(--wh)">'+nTotal+'</div><div class="stat-label">textbooks examined</div></div>'+
+    '<div class="stat"><div class="stat-num" style="color:var(--gold)">'+nMethod+'</div><div class="stat-label">give a generation METHOD</div></div>'+
+    '<div class="stat"><div class="stat-num" style="color:var(--red)">'+nCheckbox+'</div><div class="stat-label">say "brainstorm" and move on</div></div>'+
+    '<div class="stat"><div class="stat-num" style="color:var(--red)">'+nScenario+'</div><div class="stat-label">scenario / morphological</div></div>'+
+    '<div class="stat"><div class="stat-num" style="color:var(--red)">'+nCrossDisc+'</div><div class="stat-label">cross-disciplinary design</div></div>'+
+    '<div class="stat"><div class="stat-num" style="color:var(--red)">'+nOwnPhase+'</div><div class="stat-label">generation as own phase</div></div>';
+  var f1=document.getElementById('f1-text');
+  if(f1)f1.innerHTML=methodNames+' provide named generation methods — scenario-based design, morphological analysis, analogy, decomposition, instrument typologies, cross-disciplinary framing. The other <strong>'+nCheckbox+'</strong> say "brainstorm," "consult practitioners," or embed generation inside another procedure. The methods are not new — Nagel published in 1988, Bobrow & Dryzek in 1987. <strong>The field has had generation methods for four decades and the mainstream has not adopted them.</strong>';
+})();
 
 // DETAIL CARDS (kept below the matrix)
 var genData=[
