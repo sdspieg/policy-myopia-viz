@@ -134,14 +134,36 @@ a{color:var(--gold)}
 
 <!-- ═══ TAB 3: OPTION GENERATION DEEP DIVE ═══ -->
 <div class="tab-body" id="tab-generation">
-<h2>Option Generation — what each textbook actually says</h2>
-<p style="font-size:.8rem;color:var(--text-dim);margin-bottom:1rem">Of 21 textbooks with process models, all have a generation slot but only 5 fill it with substance. This tab shows exactly what each says — sorted from most to least methodological depth.</p>
+<h2>Option Generation — synoptic component breakdown</h2>
+<p style="font-size:.8rem;color:var(--text-dim);margin-bottom:.8rem">What does "generate alternatives" actually consist of? We decompose it into <strong>8 components</strong> and check which textbooks cover each. Green = present, dim = absent. Hover for details.</p>
 
+<div style="overflow-x:auto">
+<table style="border-collapse:collapse;width:100%;font-size:.68rem;margin-bottom:1rem" id="gen-matrix">
+<thead><tr style="position:sticky;top:0;z-index:10">
+<th style="background:var(--card);border:1px solid var(--border);padding:.4rem;text-align:left;color:var(--wh);min-width:160px;position:sticky;left:0;z-index:11">Textbook</th>
+<th style="background:var(--card);border:1px solid var(--border);padding:.4rem;color:var(--gold);text-align:center;min-width:70px" title="Does the book explicitly include the status quo / no-action baseline as a deliberate analytical move?">No-action baseline</th>
+<th style="background:var(--card);border:1px solid var(--border);padding:.4rem;color:var(--gold);text-align:center;min-width:70px" title="Does it tell the analyst to survey existing policies, programs, or proposals?">Survey existing</th>
+<th style="background:var(--card);border:1px solid var(--border);padding:.4rem;color:var(--gold);text-align:center;min-width:70px" title="Does it direct the analyst to look at what other jurisdictions (cities, states, countries) have done?">Cross-jurisdictional</th>
+<th style="background:var(--card);border:1px solid var(--border);padding:.4rem;color:var(--gold);text-align:center;min-width:70px" title="Does it name analogy, decomposition, or other structured creative techniques?">Named techniques</th>
+<th style="background:var(--card);border:1px solid var(--border);padding:.4rem;color:var(--gold);text-align:center;min-width:70px" title="Does it use instrument typologies (regulatory vs economic vs informational) as a generation scaffold?">Instrument typologies</th>
+<th style="background:var(--card);border:1px solid var(--border);padding:.4rem;color:var(--gold);text-align:center;min-width:70px" title="Does it use scenarios or morphological analysis to generate options?">Scenario / morphological</th>
+<th style="background:var(--card);border:1px solid var(--border);padding:.4rem;color:var(--gold);text-align:center;min-width:70px" title="Does it draw on multiple disciplines or intellectual traditions for option design?">Cross-discipline</th>
+<th style="background:var(--card);border:1px solid var(--border);padding:.4rem;color:var(--gold);text-align:center;min-width:70px" title="Is generation treated as a separate analytical phase with its own methods, or just a checklist item?">Own phase</th>
+<th style="background:var(--card);border:1px solid var(--border);padding:.4rem;color:var(--text-dim);text-align:center;min-width:50px">Pages</th>
+</tr></thead>
+<tbody id="gen-tbody"></tbody>
+</table>
+</div>
+
+<div class="note-box" style="margin-top:.5rem"><strong>Reading the matrix:</strong> The first two columns (no-action baseline, survey existing) are near-universal — almost every textbook says "consider the status quo and look at what exists." The last three columns (scenario/morphological, cross-discipline, own phase) are where the real methodological substance lives — and where almost every textbook is empty.</div>
+
+<h2 style="margin-top:1.5rem">What each textbook says — detail cards</h2>
+<p style="font-size:.75rem;color:var(--text-dim);margin-bottom:.6rem">Sorted from most to least methodological depth.</p>
 <div style="margin-bottom:1.5rem" id="gen-cards"></div>
 
 <div class="insight">
 <h3>The pattern</h3>
-<p>Read top to bottom and you see the field's entire investment in option generation. <strong>Bobrow & Dryzek</strong> wrote an entire book about it. <strong>Thissen & Walker</strong> and <strong>Enserink/Delft</strong> gave it its own structured phase. <strong>Patton/Sawicki/Clark</strong> and <strong>Nagel</strong> named specific techniques. <strong>Everyone else</strong> — including Bardach, the most widely taught — says "brainstorm" and moves on. That is 5 books with method and 16 with a checkbox, across four decades of policy analysis pedagogy.</p>
+<p>The component matrix makes the asymmetry precise. <strong>Survey existing + no-action baseline</strong> are commodity guidance — 15+ textbooks say this. <strong>Cross-jurisdictional comparison</strong> is present in ~8. <strong>Named techniques</strong> (analogy, decomposition) appear in only 4. <strong>Scenario-based / morphological generation</strong> in 3. <strong>Cross-disciplinary design</strong> in 1. <strong>Generation as its own analytical phase</strong> in 3. The field has invested in one end of this spectrum and left the other empty.</p>
 </div>
 </div>
 
@@ -488,7 +510,78 @@ document.addEventListener('mouseout',function(e){
   if(p)tipBox.style.display='none';
 });
 
-// BUILD OPTION GENERATION TAB
+// BUILD OPTION GENERATION COMPONENT MATRIX
+// Components: baseline, survey, crossjuris, techniques, typologies, scenario, crossdisc, ownphase
+// 1=yes, 0=no, .5=partial
+var GM=[
+// name, yr, star, pp, baseline, survey, crossjuris, techniques, typologies, scenario, crossdisc, ownphase, tiptext
+['Bobrow & Dryzek','1987','✦✦','~40pp',0,0,0,0,0,0,1,1,'5 intellectual traditions as design frames. Does not survey or brainstorm — designs from theory.'],
+['Thissen & Walker','2013','✦','~40pp',0,.5,0,0,0,1,0,1,'Scenario-based development, morphological analysis, design-oriented. Explicit separate phase.'],
+['Enserink / Delft','2010','✦','~45pp',0,.5,0,0,0,1,0,1,'Morphological analysis, scenario planning, leverage points from system analysis. Structured phase.'],
+['Patton/Sawicki/Clark','2013','✦','~30pp',1,1,1,1,1,0,0,0,'No-action baseline, quick surveys, lit review, cross-jurisdictional, instrument typologies, brainstorming.'],
+['Nagel','1988','✦','~50pp',0,.5,0,1,0,0,.5,0,'Analogy (cross-domain), decomposition, optimization. Closest to operations research.'],
+['Bardach & Patashnik','2019','','~15pp',1,1,.5,0,0,0,0,0,'"Start with the obvious." Consult practitioners. 3-4 max.'],
+['Weimer & Vining','2017','','~10pp',1,1,.5,0,0,0,0,0,'Lists sources: existing policy, theoretical models, modified proposals. A subsection.'],
+['Mintrom','2012','','~30pp',.5,1,1,0,1,0,0,0,'Instrument typologies, cross-national comparison. More than Bardach, less than ✦ books.'],
+['Bromell','2024','','~10pp',.5,1,.5,0,0,0,0,0,'International comparisons, stakeholder submissions. Brief. Bardach template.'],
+['McLaughlin²','2019','','~15pp',.5,1,.5,0,0,0,0,0,'Existing programs, advocacy group proposals, literature. Health-sector. Brief.'],
+['Mead','2019','','~10pp',.5,1,0,0,0,0,0,0,'Small number of alternatives. Practical, brief, Bardach-derivative.'],
+['Shalita & Schwartz','2019','','~15pp',1,1,.5,0,0,0,0,0,'Existing policies elsewhere, brainstorming. Warns against straw-men.'],
+['Dunn','2018','','embedded',0,0,0,0,0,0,0,0,'Options embedded in Recommendation procedure. No standalone generation.'],
+['Stone','2012','','~120pp (framework)',0,0,0,0,1,0,0,0,'5 instrument types. Typology, not method. Critical analysis, not generation.'],
+['Howlett/Ramesh/Perl','2020','','~40pp',0,.5,0,0,.5,0,0,0,'Instrument choice theory (Hood\'s NATO). Descriptive, not prescriptive.'],
+['Kraft & Furlong','2021','','~30pp',0,.5,0,0,.5,0,0,0,'Types of instruments at general level. Descriptive of American system.'],
+['Anderson','2015','','~30pp',0,.5,.5,0,0,0,0,0,'Routine, analogous, and creative formulation. More typological than methodological.'],
+['Pal','2014','','~45pp',0,.5,0,0,1,0,0,0,'Policy design as craft. Instrument choice theory. Most prescriptive cycle model.'],
+['Birkland','2020','','~25pp',0,.5,0,0,0,0,0,0,'How communities produce proposals. Bounded rationality limits search. Descriptive.'],
+['Knoepfel et al.','2007','','~35pp',0,.5,0,0,0,0,0,0,'Development within government. Institutional rules shape options. Descriptive.'],
+['Kingdon','1984','','~50pp (descriptive)',0,0,0,0,0,0,0,0,'Policy primeval soup. Ideas float and mutate. Descriptive, not prescriptive.'],
+];
+var compCols=['No-action baseline','Survey existing','Cross-jurisdictional','Named techniques','Instrument typologies','Scenario / morphological','Cross-discipline','Own phase'];
+var gtb=document.getElementById('gen-tbody');
+GM.forEach(function(r){
+  var tr=document.createElement('tr');
+  // Name cell
+  var td0=document.createElement('td');
+  td0.style.cssText='background:var(--card);border:1px solid var(--border);padding:.35rem .5rem;color:var(--wh);font-weight:600;position:sticky;left:0;z-index:1';
+  td0.innerHTML=r[0]+' <span style="color:var(--gold)">'+r[2]+'</span> <span style="color:var(--text-dim);font-size:.6rem">'+r[1]+'</span>';
+  tr.appendChild(td0);
+  // Component cells (indices 4-11)
+  for(var i=4;i<12;i++){
+    var td=document.createElement('td');
+    td.style.cssText='border:1px solid var(--border);padding:.3rem;text-align:center';
+    var v=r[i];
+    if(v===1){td.style.background='rgba(46,204,113,.15)';td.style.color='#2ecc71';td.textContent='●';}
+    else if(v===.5){td.style.background='rgba(219,173,80,.08)';td.style.color='var(--gold)';td.textContent='◐';}
+    else{td.style.color='var(--border)';td.textContent='·';}
+    td.title=compCols[i-4]+': '+(v===1?'Yes':v===.5?'Partial':'No')+' — '+r[12];
+    tr.appendChild(td);
+  }
+  // Pages cell
+  var tdp=document.createElement('td');
+  tdp.style.cssText='border:1px solid var(--border);padding:.3rem;text-align:center;color:var(--text-dim);font-size:.62rem';
+  tdp.textContent=r[3];
+  tr.appendChild(tdp);
+  gtb.appendChild(tr);
+});
+// Column totals
+var totR=document.createElement('tr');
+var totH=document.createElement('td');
+totH.style.cssText='background:var(--card);border:1px solid var(--border);padding:.35rem .5rem;color:var(--gold);font-weight:700;position:sticky;left:0;z-index:1';
+totH.textContent='TOTAL (of 21)';
+totR.appendChild(totH);
+for(var ci=4;ci<12;ci++){
+  var sum=0;GM.forEach(function(r){sum+=r[ci]});
+  var td=document.createElement('td');
+  td.style.cssText='border:1px solid var(--border);padding:.3rem;text-align:center;font-weight:700;color:var(--gold);font-size:.75rem';
+  td.textContent=sum%1===0?sum:sum.toFixed(1);
+  totR.appendChild(td);
+}
+var tdpT=document.createElement('td');tdpT.style.cssText='border:1px solid var(--border)';
+totR.appendChild(tdpT);
+gtb.appendChild(totR);
+
+// DETAIL CARDS (kept below the matrix)
 var genData=[
   {n:'Bobrow & Dryzek',y:'1987',star:'✦✦',pp:'~40pp (~3 chapters)',cls:'c-gen',
    text:'The only textbook organised entirely around option DESIGN. Five intellectual traditions — welfare economics, public choice, social structure, information processing, political philosophy — each applied to the same problem. The analyst is directed to ask what each tradition would suggest, producing options invisible from any single frame. Multi-perspectival within the social sciences; does not extend to engineering, ecology, or medicine. The closest any textbook comes to cross-domain generation.'},
