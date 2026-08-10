@@ -60,7 +60,7 @@ a{color:var(--gold)}
 </head>
 <body>
 <h1>Policy Analysis Textbook Steps — Synoptic Comparison</h1>
-<p class="subtitle">How 23 textbooks prescribe the policy analysis process — and where option <em>generation</em> sits relative to option <em>evaluation</em>.<br>Source: <a href="https://www.zotero.org/groups/2366690/policy_analysis">Zotero group 2366690</a>, "Textbooks" collection.</p>
+<p class="subtitle">How 24 textbooks prescribe the policy analysis process — and where option <em>generation</em> sits relative to option <em>evaluation</em>.<br>Source: <a href="https://www.zotero.org/groups/2366690/policy_analysis">Zotero group 2366690</a>, "Textbooks" collection.</p>
 <div class="tabs">
 <div class="tab active" onclick="switchTab('insights')">Main Insights</div>
 <div class="tab" onclick="switchTab('coverage')">Coverage Matrix</div>
@@ -72,7 +72,7 @@ a{color:var(--gold)}
 <!-- ═══ TAB 0: INSIGHTS (data-driven from GM array) ═══ -->
 <div class="tab-body active" id="tab-insights">
 <h2>The headline</h2>
-<p style="font-size:1rem;color:var(--wh);margin-bottom:1rem"><strong>Policy analysis has methods for generating options. The mainstream doesn't teach them.</strong> Six textbooks — out of twenty-three — provide named methods for option generation: scenario-based design, morphological analysis, analogy, decomposition, cross-disciplinary framing. One (Bobrow & Dryzek 1987) organised an entire book around it. The methods exist. They have existed since the 1980s. The other seventeen textbooks — including Bardach, the most widely taught — say "brainstorm" and move on. The field's problem is not that nobody built a generation methodology. It is that the methodology keeps not being adopted.</p>
+<p style="font-size:1rem;color:var(--wh);margin-bottom:1rem"><strong>Policy analysis has methods for generating options. The mainstream doesn't teach them.</strong> Six textbooks — out of twenty-four — provide named methods for option generation: scenario-based design, morphological analysis, analogy, decomposition, cross-disciplinary framing. One (Bobrow & Dryzek 1987) organised an entire book around it. The methods exist. They have existed since the 1980s. The other eighteen textbooks — including Bardach, the most widely taught — say "brainstorm" and move on. The field's problem is not that nobody built a generation methodology. It is that the methodology keeps not being adopted.</p>
 <div class="stats-bar" id="stats-bar-computed"></div>
 <h2>Six findings</h2>
 <div class="finding"><div class="finding-num">1</div><div class="finding-body"><h4>The methods exist — in 5 books out of 21</h4><p id="f1-text"></p></div></div>
@@ -340,6 +340,16 @@ swim:[{l:'Problem framing',c:'c-prob'},{l:'Multiple frames',c:'c-evid',t:'5 inte
 {s:5,l:'Integration & synthesis',c:'c-comp',t:''},{s:6,l:'Recommend',c:'c-dec',t:''},
 {s:0,l:'—',c:'c-na',t:''}],
 swim:[{l:'Problem formulation',c:'c-prob'},{l:'Generate alternatives ✦',c:'c-gen',t:'Analogy, decomposition, optimization'},{l:'Criteria ID',c:'c-crit'},{l:'Evaluate',c:'c-eval'},{l:'Integration & synthesis',c:'c-comp'},{l:'Recommend',c:'c-dec'}]},
+{n:'Bobbio et al. (IT)',y:'2017',dim:1,grid:[
+{s:0,l:'Problemi',c:'c-prob',t:'Problem framing, collective problems, agenda setting.'},
+{s:0,l:'—',c:'c-na',t:''},
+{s:0,l:'Strumenti (86!)',c:'c-gen',t:'Ch 5: 5 instrument types + procedural. Cites 86 instruments (Howlett). Explicitly names "pensiero laterale" (lateral thinking) for discovering new instruments. Nudges (Thaler/Sunstein). Most generation content of any non-English textbook.'},
+{s:0,l:'Alternative',c:'c-crit',t:'Rational-comprehensive vs bounded rationality vs incrementalism vs garbage can — each implies different search scope.'},
+{s:0,l:'Valutazione',c:'c-eval',t:'CBA, multi-criteria, ex-ante and ex-post.'},
+{s:0,l:'Decisione',c:'c-comp',t:'Voting, negotiation, deliberation, arbitration, sortition.'},
+{s:0,l:'—',c:'c-na',t:''},
+{s:0,l:'Implementazione',c:'c-impl',t:'Chs 8-9. Top-down vs bottom-up.'}],
+swim:[{l:'Problemi',c:'c-prob'},{l:'Strumenti (86!)',c:'c-gen',t:'Lateral thinking + 86 instruments + nudges'},{l:'Alternative/Criteri',c:'c-crit'},{l:'Valutazione',c:'c-eval'},{l:'Decisione',c:'c-comp'},{l:'Implementazione',c:'c-impl'}]},
 {n:'Majone',y:'1989',dim:1,grid:[
 {s:0,l:'Public deliberation',c:'c-prob',t:'Ch 1. Analysis as public argument, not optimization.'},
 {s:0,l:'Evidence as craft',c:'c-evid',t:'Ch 3. Data→information→evidence is a craft process.'},
@@ -447,6 +457,7 @@ const BAR=[
 {n:'Anderson',gen:30,eval:30,other:115,total:175,ratio:'1:1'},
 {n:'Pal',gen:45,eval:25,other:100,total:170,ratio:'0.6:1'},
 {n:'Birkland',gen:25,eval:25,other:130,total:180,ratio:'1:1'},
+{n:'Bobbio et al. (IT)',gen:60,eval:30,other:130,total:220,ratio:'0.5:1'},
 {n:'Majone',gen:20,eval:25,other:135,total:180,ratio:'1.3:1'},
 {n:'Howlett (Designing)',gen:80,eval:0,other:70,total:150,ratio:'0:1'},
 {n:'Fischer/Miller/Sidney',gen:0,eval:240,other:160,total:400,ratio:'∞:1'},
@@ -547,6 +558,7 @@ var GM=[
 ['Anderson','2015','','~30pp',0,.5,.5,0,0,0,0,0,'Routine, analogous, and creative formulation. More typological than methodological.'],
 ['Pal','2014','','~45pp',0,.5,0,0,1,0,0,0,'Policy design as craft. Instrument choice theory. Most prescriptive cycle model.'],
 ['Birkland','2020','','~25pp',0,.5,0,0,0,0,0,0,'How communities produce proposals. Bounded rationality limits search. Descriptive.'],
+['Bobbio et al. (IT)','2017','','~60pp',0,.5,0,1,1,0,0,0,'86 instruments (from Howlett). Explicitly names lateral thinking (pensiero laterale). Nudges (Thaler/Sunstein). Most generation content of any non-English textbook.'],
 ['Majone','1989','','~20pp (craft)',0,0,0,0,0,0,0,0,'Options through argument and deliberation. Rejects systematic generation — treats it as craft. Feasibility arguments and institutional change create new option spaces.'],
 ['Howlett (Designing)','2011','','~80pp',0,.5,0,0,1,0,0,0,'NATO instrument taxonomy (Nodality, Authority, Treasure, Organization). Systematic classification of what govts CAN do — prerequisite for design, but classification ≠ generation method.'],
 ['Knoepfel et al.','2007','','~35pp',0,.5,0,0,0,0,0,0,'Development within government. Institutional rules shape options. Descriptive.'],
