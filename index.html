@@ -77,7 +77,7 @@ a{color:var(--gold)}
 <h2>Six findings</h2>
 <div class="finding"><div class="finding-num">1</div><div class="finding-body"><h4>The methods exist — but only in a quarter of the textbooks</h4><p id="f1-text"></p></div></div>
 <div class="finding"><div class="finding-num">2</div><div class="finding-body"><h4>The component gradient</h4><p>Option generation decomposes into 8 components (see the <span style="cursor:pointer;color:var(--gold);text-decoration:underline" onclick="switchTab('generation')">Option Generation tab</span>). The left end — "survey existing policies," "include the status quo" — is commodity guidance present in the majority. The right end — scenario-based generation, cross-disciplinary design, generation as its own analytical phase — appears in only <span id="f2-right"></span>. The field invested in the easy end and left the hard end empty.</p></div></div>
-<div class="finding"><div class="finding-num">3</div><div class="finding-body"><h4>The evaluation tail</h4><p>Every analytical textbook follows generation with <strong>2–4 evaluation steps</strong>. The typical page ratio is roughly <strong>3:1</strong>. Bardach: ~15pp generation vs ~50pp evaluation. Weimer & Vining: a subsection vs ~120pp. Only Bobrow & Dryzek invert this — because their entire book IS about generation.</p></div></div>
+<div class="finding"><div class="finding-num">3</div><div class="finding-body"><h4>The evaluation tail</h4><p>Every analytical textbook follows generation with <strong>2–4 evaluation steps</strong>. The <strong>median</strong> page ratio is <span id="f3-ratio"></span> &mdash; skewed by a long tail rather than typical of most books. Bardach &amp; Patashnik (2016): ~15pp generation vs ~25pp evaluation &mdash; Steps Five and Six, pp.46&ndash;70. Weimer & Vining: a subsection vs ~120pp. Only Bobrow & Dryzek invert this — because their entire book IS about generation.</p></div></div>
 <div class="finding"><div class="finding-num">4</div><div class="finding-body"><h4>The criteria-first split</h4><p><strong><span id="f4-count"></span> textbooks</strong> put criteria <em>before</em> generation — the analyst is told to know what they're looking for before they search. The rest follow Bardach's order. <strong>Neither camp discusses the other's ordering as a design choice</strong>, and neither observes what the ordering implies for the scope of search.</p></div></div>
 <div class="finding"><div class="finding-num">5</div><div class="finding-body"><h4>Formulation ≠ method</h4><p><strong>6 cycle-model textbooks</strong> have a "policy formulation" stage — but describe it as a <em>political process</em> (what happens in government), not an <em>analytical method</em> (what an analyst should do). Having a generation slot in a descriptive cycle is not having a generation method in a prescriptive toolkit.</p></div></div>
 <div class="finding"><div class="finding-num">6</div><div class="finding-body"><h4>Cross-domain search: still missing</h4><p>Even the strongest generation book — Bobrow & Dryzek — is <strong>multi-perspectival within the social sciences</strong> (welfare economics, public choice, sociology, information theory, political philosophy). It does not extend to ecology, engineering, or medicine, and it does not search for structural analogues across domains. The protocol the policy myopia paper proposes — "where has a structurally similar problem already been solved, in <em>any</em> field?" — goes further than any textbook in the corpus.</p></div></div>
@@ -207,10 +207,10 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelect
 
 // DATA — each book with grid cells + swim steps + tooltips
 const D=[
-{n:'Bardach & Patashnik',y:'2019',grid:[
+{n:'Bardach & Patashnik',y:'2016',grid:[
 {s:1,l:'Define the problem',c:'c-prob',t:'~10pp. Keep it small, actionable, client-oriented.'},
 {s:2,l:'Assemble evidence',c:'c-evid',t:'~20pp. Data, interviews, literature. "Think before you collect."'},
-{s:3,l:'Construct alternatives',c:'c-gen',t:'~15pp. Start with the obvious. Ask practitioners. 3-4 max. No named method.'},
+{s:3,l:'Construct alternatives',c:'c-gen',t:'~15pp, and it sits in TWO places (verified against the 2016 edition): Part I Step Three pp.18-26 (9pp - sources of ideas: what political actors propose, institutions\' off-the-shelf inventories, start comprehensive end focused) PLUS Part III pp.116-121 (6pp - design-element construction: start with the most powerful element, then the most robust). Part IV Smart (Best) Practices is NOT generation: it is external-validity vetting of a practice borrowed from elsewhere. No named search method in either place.'},
 {s:4,l:'Select criteria',c:'c-crit',t:'~10pp. Efficiency, equity, liberty, feasibility.'},
 {s:5,l:'Project outcomes',c:'c-eval',t:'~15pp. For each alternative, predict what happens.'},
 {s:6,l:'Confront trade-offs',c:'c-comp',t:'~10pp. Lay alternatives side by side.'},
@@ -589,7 +589,7 @@ var GM=[
 ['Enserink et al. (Delft)','2010','✦','~45pp',0,.5,0,0,0,1,0,1,'Morphological analysis, scenario planning, leverage points from system analysis. Structured phase.'],
 ['Patton, Sawicki & Clark','2013','✦','~30pp',1,1,1,1,1,0,0,0,'No-action baseline, quick surveys, lit review, cross-jurisdictional, instrument typologies, brainstorming.'],
 ['Nagel','1988','✦','~50pp',0,.5,0,1,0,0,.5,0,'Analogy (cross-domain), decomposition, optimization. Closest to operations research.'],
-['Bardach & Patashnik','2019','','~15pp',1,1,.5,0,0,0,0,0,'"Start with the obvious." Consult practitioners. 3-4 max.'],
+['Bardach & Patashnik','2016','','~15pp',1,1,.5,0,0,0,0,0,'"Start with the obvious." Consult practitioners. 3-4 max.'],
 ['Weimer & Vining','2017','','~10pp',1,1,.5,0,0,0,0,0,'Lists sources: existing policy, theoretical models, modified proposals. A subsection.'],
 ['Mintrom','2012','','~30pp',.5,1,1,0,1,0,0,0,'Instrument typologies, cross-national comparison. More than Bardach, less than ✦ books.'],
 ['Bromell','2024','','~10pp',.5,1,.5,0,0,0,0,0,'International comparisons, stakeholder submissions. Brief. Bardach template.'],
@@ -706,7 +706,7 @@ var genData=[
    text:'The most methodologically rich generation chapter in the Bardach tradition. Named techniques: the no-action baseline as a deliberate analytical move, quick surveys of existing programs, literature review, cross-jurisdictional comparison (what other cities/states/countries do), policy-instrument typologies (regulatory vs economic vs informational), brainstorming with stakeholders, benchmarking against best practices, modifying components of existing policies.'},
   {n:'Nagel',y:'1988',star:'✦',pp:'~50pp (~2 chapters)',cls:'c-gen',
    text:'One of the few pre-2000 sources treating generation as a methodological problem. Named techniques: analogical reasoning (find similar problems in other domains, import their solutions), decomposition (break the problem into sub-problems, generate options for each, recombine), optimization methods (linear programming, decision trees that implicitly generate the "best" alternative), systematic variation of policy instruments. Closest to operations research. Largely forgotten by the mainstream.'},
-  {n:'Bardach & Patashnik',y:'2019',star:'',pp:'~15pp',cls:'c-gen-thin',
+  {n:'Bardach & Patashnik',y:'2016',star:'',pp:'~15pp',cls:'c-gen-thin',
    text:'"Start with the obvious policy levers and consult practitioners and interest groups for options they have considered. Always include a no-action baseline. Don\'t generate too many — 3-4 serious alternatives is usually enough." Warns against "laundry lists" and emphasises political feasibility as a filter. No systematic search method. The most widely taught textbook.'},
   {n:'Weimer & Vining',y:'2017',star:'',pp:'~10pp (subsection)',cls:'c-gen-thin',
    text:'A brief subsection within a larger chapter, not a standalone analytical step. Lists sources of alternatives: existing policy (including status quo), theoretical models suggesting interventions, modified versions of proposals already on the table, analogies from other jurisdictions. No systematic search protocol. Striking thinness given the book\'s methodological depth elsewhere.'},
@@ -789,7 +789,7 @@ function renderPhaseMatrix(targetId,cols,rows){
 // PROBLEM DEFINITION components
 var PM_COLS=['Client scoping','Quantify magnitude','Causal modeling','Market/gov failure','Actor/stakeholder','Boundary analysis','Multiple frames','Own structured method'];
 var PM_ROWS=[
-['Bardach & Patashnik','2019',1,1,0,0,0,0,0,0,'Keep it small, actionable, client-oriented. ~10pp.'],
+['Bardach & Patashnik','2016',1,1,0,0,0,0,0,0,'Keep it small, actionable, client-oriented. ~10pp.'],
 ['Weimer & Vining','2017',1,.5,1,1,0,0,0,0,'3 sub-steps with market/government failure frameworks. ~80pp.'],
 ['Patton, Sawicki & Clark','2013',1,1,.5,0,1,0,0,0,'Includes stakeholder ID, boundary-setting, back-of-envelope calculations. ~50pp.'],
 ['Dunn','2018',.5,0,1,0,0,1,0,1,'Boundary, classificational, hierarchy analysis, synectics. Most rigorous. ~60pp.'],
@@ -805,7 +805,7 @@ renderPhaseMatrix('mx-problem',PM_COLS,PM_ROWS);
 // CRITERIA components
 var CR_COLS=['Efficiency/CBA','Equity/distribution','Political feasibility','Admin feasibility','Liberty/rights','Stakeholder-derived','Criteria before gen','Operationalized indicators'];
 var CR_ROWS=[
-['Bardach & Patashnik','2019',1,1,1,0,.5,0,0,0,'Menu: efficiency, equity, liberty, feasibility. ~10pp.'],
+['Bardach & Patashnik','2016',1,1,1,0,.5,0,0,0,'Menu: efficiency, equity, liberty, feasibility. ~10pp.'],
 ['Weimer & Vining','2017',1,1,1,1,0,0,1,0,'Client objectives + constraints. BEFORE generation. ~20pp.'],
 ['Patton, Sawicki & Clark','2013',1,.5,1,1,0,.5,1,1,'BEFORE generation. Operationalized into measurable indicators. ~25pp.'],
 ['Dunn','2018',1,1,0,0,0,0,0,0,'Embedded in Recommendation. Optimization, satisficing, mixed scanning.'],
@@ -821,7 +821,7 @@ renderPhaseMatrix('mx-criteria',CR_COLS,CR_ROWS);
 // EVALUATION components
 var EV_COLS=['Cost-benefit (CBA)','Multi-criteria (MCA)','Sensitivity analysis','Qualitative projection','Simulation/modeling','Implementation feasibility','Comparison matrix','Robustness testing'];
 var EV_ROWS=[
-['Bardach & Patashnik','2019',0,0,0,1,0,.5,1,0,'"Project outcomes" + "Confront trade-offs." Qualitative. ~25pp.'],
+['Bardach & Patashnik','2016',0,0,0,1,0,.5,1,0,'"Project outcomes" + "Confront trade-offs." Qualitative. ~25pp.'],
 ['Weimer & Vining','2017',1,1,1,1,1,1,1,0,'CBA, CEA, multi-goal analysis, Monte Carlo. Most extensive. ~150pp.'],
 ['Patton, Sawicki & Clark','2013',1,.5,1,1,0,1,1,0,'CBA, CEA, decision analysis, scorecard matrices. ~80pp.'],
 ['Dunn','2018',1,0,.5,1,1,0,0,0,'Forecasting + Recommendation. Ex-post monitoring/evaluation separate. ~120pp.'],
@@ -837,7 +837,7 @@ renderPhaseMatrix('mx-evaluate',EV_COLS,EV_ROWS);
 // DECISION & COMMUNICATION components
 var DC_COLS=['Explicit recommendation','Decision rules','Uncertainty communicated','Policy memo','Oral briefing','Audience adaptation','Implementation planning','Monitoring framework'];
 var DC_ROWS=[
-['Bardach & Patashnik','2019',1,0,0,1,0,1,0,0,'"Decide!" (~5pp) + "Tell your story" (~15pp memo-writing).'],
+['Bardach & Patashnik','2016',1,0,0,1,0,1,0,0,'"Decide!" (~5pp) + "Tell your story" (~15pp memo-writing).'],
 ['Weimer & Vining','2017',1,0,1,1,1,1,0,0,'Analyst owes the client a bottom line. Both memo + briefing. ~25pp.'],
 ['Patton, Sawicki & Clark','2013',.5,0,0,.5,0,.5,1,1,'Implementation planning + monitoring framework. ~45pp.'],
 ['Dunn','2018',0,1,0,0,0,0,0,1,'Decision rules (optimize, satisfice). Monitoring as separate procedure.'],
@@ -867,6 +867,13 @@ TIPS={"Bardach & Patashnik": {"Define the problem": "<b>~10pp</b> — Frame the 
   var g=document.getElementById('sq-genfirst'); if(g)g.textContent=nm(genFirst);
   var c=document.getElementById('sq-critfirst'); if(c)c.textContent=nm(critFirst);
   var n=function(k){return GM.filter(function(r){return r[k]>=0.5}).length};
+  var rr=BAR.filter(function(b){return !b.nodata&&!b.nonstep&&b.gen>0})
+              .map(function(b){return b.eval/b.gen}).sort(function(a,b){return a-b});
+  var med=rr[Math.floor(rr.length/2)];
+  var hi=rr.filter(function(x){return x>=3}).length;
+  var f3=document.getElementById('f3-ratio');
+  if(f3)f3.innerHTML='<strong>'+med.toFixed(1)+':1</strong> across the '+rr.length+
+    ' books with a countable split, with only '+hi+' at or above 3:1';
   var f2=document.getElementById('f2-right');
   if(f2)f2.innerHTML=n(9)+', '+n(10)+' and '+n(11)+' textbooks respectively';
 })();
